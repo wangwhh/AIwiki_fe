@@ -8,18 +8,18 @@
         <a-sub-menu key="sub1">
             <template #title>
           <span>
-            subnav 1
+            模块 1
           </span>
             </template>
-            <a-menu-item key="1">option1</a-menu-item>
-            <a-menu-item key="2">option2</a-menu-item>
-            <a-menu-item key="3">option3</a-menu-item>
-            <a-menu-item key="4">option4</a-menu-item>
+            <a-menu-item key="1">词条1</a-menu-item>
+            <a-menu-item key="2">词条2</a-menu-item>
+            <a-menu-item key="3">词条3</a-menu-item>
+            <a-menu-item key="4">词条4</a-menu-item>
         </a-sub-menu>
         <a-sub-menu key="sub2">
             <template #title>
           <span>
-            subnav 2
+            模块 2
           </span>
             </template>
             <a-menu-item key="5">option5</a-menu-item>
@@ -30,7 +30,7 @@
         <a-sub-menu key="sub3">
             <template #title>
           <span>
-            subnav 3
+            模块 3
           </span>
             </template>
             <a-menu-item key="9">option9</a-menu-item>

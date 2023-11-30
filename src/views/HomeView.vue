@@ -1,26 +1,17 @@
 <template>
     <a-layout>
-        <a-layout-header class="layout-header" :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
-            <TopBar/>
-        </a-layout-header>
         <a-layout-sider class="sider-menu" >
           <Menu/>
         </a-layout-sider>
         <a-layout>
             <a-layout-content class="home-content">
-                <div>
-                    content
-                    <div v-for="i in 100">
-                        <p>content</p>
-                    </div>
-                </div>
+                <Entries/>
             </a-layout-content>
             <a-layout-sider class="right-bar">
                 <a-flex gap="middle" vertical>
                     <GoodEntry/>
                     <RecTools/>
                 </a-flex>
-
             </a-layout-sider>
         </a-layout>
 
@@ -32,10 +23,17 @@ import TopBar from "@/components/TopBar.vue";
 import Menu from "@/components/Menu.vue";
 import GoodEntry from "@/components/Home/GoodEntry.vue";
 import RecTools from "@/components/Home/RecTools.vue";
+import {ref} from "vue";
+import Entries from "@/components/Home/Entries.vue";
 
 export default {
     name: "HomeView",
-    components: {RecTools, GoodEntry, TopBar, Menu}
+    components: {Entries, RecTools, GoodEntry, TopBar, Menu},
+
+    setup() {
+
+    },
+
 }
 </script>
 
@@ -49,14 +47,7 @@ export default {
     position: fixed;
 
 }
-.layout-header {
-    width: 100%;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1)
-}
+
 .home-content {
     background: #fff;
     /*margin-top: 72px;*/

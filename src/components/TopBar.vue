@@ -5,8 +5,12 @@
             mode="horizontal"
             :style="{ height: '100%', lineHeight: '50px', padding: '10px' }"
     >
-        <a-menu-item key="1">词条展示</a-menu-item>
-        <a-menu-item key="2">工具集</a-menu-item>
+        <router-link to="/home">
+            <a-menu-item key="1">词条展示</a-menu-item>
+        </router-link>
+        <router-link to="/tools">
+            <a-menu-item key="2">工具集</a-menu-item>
+        </router-link>
     </a-menu>
     <a-flex gap="large" align="center" horizotal class="head-right-bar">
         <a-input-search
@@ -41,6 +45,7 @@ export default {
     name: "TopBar",
     components: {AntDesignOutlined},
     setup() {
+
         function onSearch(value) {
             console.log(value);
         }
