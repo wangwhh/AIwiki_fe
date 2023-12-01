@@ -39,7 +39,7 @@
 import {AntDesignOutlined} from "@ant-design/icons-vue";
 import {ref} from "vue";
 const value = ref('');
-const selectedKeys1 = ref(['2']);
+const selectedKeys1 = ref(['1']);
 
 export default {
     name: "TopBar",
