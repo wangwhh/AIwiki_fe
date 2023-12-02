@@ -1,6 +1,14 @@
 <template>
-    <EntryContent class="entry-content"/>
-    <Anchor/>
+    <a-layout>
+        <a-layout-sider class="entry-sider">
+            <Anchor/>
+        </a-layout-sider>
+        <a-layout-content>
+            <EntryContent class="entry-content"/>
+        </a-layout-content>
+    </a-layout>
+
+
 </template>
 
 <script>
@@ -42,8 +50,18 @@ export default {
 
 <style scoped>
 .entry-content {
-    margin: 100px 300px 0 300px;
-
+    margin: 100px 300px 20px 320px;
+    overflow: initial;
 }
-
+.entry-sider {
+    max-width: 270px !important;
+    width : 270px !important;
+    margin: 100px 0 10px 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px 20px 20px 10px;
+    position: fixed;
+    overflow: auto ;
+    height: calc(100vh - 120px);
+}
 </style>

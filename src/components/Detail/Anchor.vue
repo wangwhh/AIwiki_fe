@@ -1,61 +1,56 @@
 <template>
     <a-anchor
-            :target-offset="targetOffset"
-            :items=items
+        :target-offset="targetOffset"
+        :items=items
+        @click="handleAnchorClick"
     ></a-anchor>
 </template>
 
 <script>
+//TODO: highlight the anchor when the corresponding heading is in the viewport
 import { onMounted, ref } from 'vue';
 export default {
     name: 'Anchor',
     setup() {
-        const anchors = this.$refs.preview.$el.querySelectorAll('h1,h2,h3,h4,h5,h6');
-        const titles = Array.from(anchors).filter((title) => !!title.innerText.trim());
-        const items = [
-            {
-                key: '1',
-                href: '#components-anchor-demo-basic',
-                title: 'Basic demo',
-            },
-            {
-                key: '2',
-                href: '#components-anchor-demo-static',
-                title: 'Static demo',
-            },
-            {
-                key: '3',
-                href: '#api',
-                title: 'API',
-                children: [
-                    {
-                        key: '4',
-                        href: '#anchor-props',
-                        title: 'Anchor Props',
-                    },
-                    {
-                        key: '5',
-                        href: '#link-props',
-                        title: 'Link Props',
-                    },
-                ],
-            },
-        ]
+        let items = ref([]);
         const targetOffset = ref(undefined);
+        function handleAnchorClick(e, link) {
+            e.preventDefault();
+
+           const heading = document.querySelector(`[data-v-md-line="${link.href}"`);
+           heading.scrollIntoView({
+               behavior: 'smooth',
+               block: 'center',
+           });
+        }
+
+        function getTitles() {
+            const anchors = document.querySelectorAll('h2,h3');
+            const titles = Array.from(anchors).filter((title) => !!title.innerText.trim());
+            items.value = titles.map((title) => ({
+                key: titles.indexOf(title),
+                href: `${title.attributes[1].nodeValue}`,
+                title: title.innerText,
+            }));
+            console.log(items.value);
+        }
+
+
         onMounted(() => {
-            targetOffset.value = window.innerHeight / 2;
+            getTitles();
+            window.addEventListener('resize', () => {
+                targetOffset.value = window.innerHeight / 2;
+            });
         });
         return {
             targetOffset,
-            items
+            items,
+            handleAnchorClick
         };
     },
 };
 </script>
 
 <style scoped>
-.content-anchor {
-    position: fixed;
-    margin: 100px 100px 0 0;
-}
+
 </style>

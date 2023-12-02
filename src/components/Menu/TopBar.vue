@@ -18,7 +18,7 @@
                 placeholder="请输入关键词"
                 enter-button
                 @search="onSearch"
-                style="width: 200px;"
+                style="width: 300px; margin-right: 30px"
         />
         <a-popover placement="bottom">
             <template #content>

@@ -45,7 +45,6 @@ export default {
     border-radius: 10px;
     background-color: white;
     position: fixed;
-
 }
 
 .home-content {

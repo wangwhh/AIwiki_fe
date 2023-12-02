@@ -37,7 +37,7 @@ const router = new createRouter({
     history: createWebHistory(),
     routes,
 })
-// TODO: fix this
+
 router.beforeEach((to, from, next) => {
     if(to.meta.title) {
         document.title = 'AIWiki - ' + to.meta.title;
