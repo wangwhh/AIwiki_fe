@@ -5,7 +5,7 @@
         </a-layout-sider>
         <a-layout>
             <a-layout-content class="home-content">
-                <Entries/>
+                <Topics/>
             </a-layout-content>
             <a-layout-sider class="right-bar">
                 <a-flex gap="middle" vertical>
@@ -24,11 +24,11 @@ import Menu from "@/components/Menu/Menu.vue";
 import GoodEntry from "@/components/Home/GoodEntry.vue";
 import RecTools from "@/components/Home/RecTools.vue";
 import {ref} from "vue";
-import Entries from "@/components/Home/Entries.vue";
+import Topics from "@/components/Home/Topics.vue";
 
 export default {
     name: "HomeView",
-    components: {Entries, RecTools, GoodEntry, TopBar, Menu},
+    components: {Topics, RecTools, GoodEntry, TopBar, Menu},
 
     setup() {
 
@@ -40,21 +40,22 @@ export default {
 <style scoped>
 .sider-menu {
     height: 100%;
-    width: 200px;
-    margin-top: 80px;
+    width: 230px !important;
+    max-width: 300px !important;
+    margin: 100px 0 10px 20px;
     border-radius: 10px;
     background-color: white;
     position: fixed;
 }
 
 .home-content {
-    background: #fff;
+    /*background: #fff;*/
     /*margin-top: 72px;*/
-    margin: 80px 320px 16px 210px;
+    margin: 100px 340px 16px 270px;
     overflow: initial ;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     text-align: center;
-    padding: 24px;
+    /*padding: 24px;*/
 }
 
 .right-bar {
@@ -63,8 +64,7 @@ export default {
     width: 300px !important;
     position: fixed;
     right: 0;
-    margin-right: 10px;
-    margin-top: 80px;
+    margin: 100px 20px 16px 0;
 }
 
 .ant-layout-header {

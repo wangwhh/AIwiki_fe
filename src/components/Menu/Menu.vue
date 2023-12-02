@@ -8,7 +8,7 @@
         <a-sub-menu key="sub1">
             <template #title>
           <span>
-            模块 1
+            专题 1
           </span>
             </template>
             <a-menu-item key="1">词条1</a-menu-item>
@@ -19,7 +19,7 @@
         <a-sub-menu key="sub2">
             <template #title>
           <span>
-            模块 2
+            专题 2
           </span>
             </template>
             <a-menu-item key="5">option5</a-menu-item>
@@ -30,7 +30,7 @@
         <a-sub-menu key="sub3">
             <template #title>
           <span>
-            模块 3
+            专题 3
           </span>
             </template>
             <a-menu-item key="9">option9</a-menu-item>

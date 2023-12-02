@@ -1,0 +1,73 @@
+<template>
+    <a-card v-for="topic in topics" class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
+        <a-flex justify="space-between">
+            <img
+                alt="avatar"
+                :src=topic.img_src
+                class="imgStyle"
+            />
+            <a-flex vertical align="flex-end" justify="space-between" :style="{ padding: '32px' }">
+                <a-typography>
+                    <a-typography-title :level="3">
+                        {{topic.title}}
+                    </a-typography-title>
+                </a-typography>
+                <a-button type="primary" @click="onEntryClicked(topic)" target="_blank">了解更多</a-button>
+            </a-flex>
+        </a-flex>
+    </a-card>
+</template>
+
+<script>
+import {ref} from "vue";
+import router from "@/router";
+
+export default {
+    name: "Topics",
+    setup() {
+        let topics = ref([
+            {
+                img_src: "src/assets/pics/what-is-lora.png",
+                title: "什么是LoRA？一文读懂低秩适应的概念、原理、优缺点和主要应用",
+                id: 1
+            },
+            {
+                img_src: "src/assets/pics/what-is-pre-training.png",
+                title: "什么是预训练Pre-training？定义、重要性、技术和挑战",
+                id: 2
+            }
+        ]);
+
+
+        function onEntryClicked(topic) {
+            let new_page = router.resolve({
+                path:'/entry/' ,
+                query: {
+                    id: topic.id
+                }
+
+            });
+            window.open(new_page.href, '_blank');
+        }
+
+
+        return {
+            topics,
+            onEntryClicked
+        };
+    }
+}
+</script>
+
+<style scoped>
+.cardStyle  {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.imgStyle {
+    display: block;
+    height: 250px;
+}
+</style>
