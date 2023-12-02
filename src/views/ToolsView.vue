@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import TopBar from "@/components/TopBar.vue";
+import TopBar from "@/components/Menu/TopBar.vue";
 import ToolsMenu from "@/components/Tools/ToolsMenu.vue";
 // import GoodEntry from "@/components/Home/GoodEntry.vue";
 import RecTools from "@/components/Home/RecTools.vue";
