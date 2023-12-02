@@ -18,7 +18,7 @@
                 placeholder="请输入关键词"
                 enter-button
                 @search="onSearch"
-                style="width: 200px;"
+                style="width: 300px; margin-right: 30px"
         />
         <a-popover placement="bottom">
             <template #content>
@@ -39,7 +39,7 @@
 import {AntDesignOutlined} from "@ant-design/icons-vue";
 import {ref} from "vue";
 const value = ref('');
-const selectedKeys1 = ref(['2']);
+const selectedKeys1 = ref(['1']);
 
 export default {
     name: "TopBar",

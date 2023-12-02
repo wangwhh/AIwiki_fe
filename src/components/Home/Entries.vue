@@ -5,9 +5,14 @@
                 {{ entry_cell.category }}
             </a-divider>
 
-            <a-button v-for="entry in entry_cell.entries" type="link" style="width: 150px; margin-top: 10px">
-                {{ entry }}
+            <a-button v-for="entry in entry_cell.entries"
+                      type="link"
+                      style="width: 150px; margin-top: 10px"
+                      @click="onEntryClicked(entry)"
+            >
+                {{ entry.title }}
             </a-button>
+
 
         </div>
     </a-flex>
@@ -15,17 +20,21 @@
 
 <script>
 import {ref} from "vue";
+import router from "@/router";
 
 export default {
     name: "Entries",
     setup() {
         let entries_all = ref([]);
         function tmp_generate_entry() {
-            for(let i = 0; i < 5; i++) {
+            for(let i = 1; i <= 5; i++) {
                 let category = '模块' + i;
                 let entries = [];
-                for (let i = 0; i < 8; i++) {
-                    entries.push('词条' + i);
+                for (let i = 1; i <= 8; i++) {
+                    entries.push({
+                        title: '词条' + i,
+                        id: i
+                    });
                 }
                 entries_all.value.push({
                     category,
@@ -33,10 +42,22 @@ export default {
                 });
             }
         }
+
+        function onEntryClicked(entry) {
+            let new_page = router.resolve({
+                path:'/entry/' ,
+                query: {
+                    id: entry.id
+                }
+
+            });
+            window.open(new_page.href, '_blank');
+        }
         tmp_generate_entry();
         //console.log(entries_all.value)
         return {
             entries_all,
+            onEntryClicked
         };
     }
 }
