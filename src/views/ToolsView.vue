@@ -4,12 +4,23 @@
           <ToolsMenu/>
         </a-layout-sider>
         <a-layout>
-            <a-layout-content class="home-content">
-                <ToolsEntries/>
-            </a-layout-content>
+            <a-layout-sider class="fcontent">
+                <a-flex gap="middle" vertical>
+                    <ToolsEntries/>
+                </a-flex>
+            </a-layout-sider>
+            <a-layout-sider class="scontent">
+                <a-flex gap="middle" vertical>
+                    <FKit/>
+                </a-flex>
+            </a-layout-sider>
+            <a-layout-sider class="tcontent">
+                <a-flex gap="middle" vertical>
+                    <SKit/>
+                </a-flex>
+            </a-layout-sider>
             <a-layout-sider class="right-bar">
                 <a-flex gap="middle" vertical>
-                    <!-- <GoodEntry/> -->
                     <RecTools/>
                 </a-flex>
             </a-layout-sider>
@@ -25,10 +36,12 @@ import ToolsMenu from "@/components/Tools/ToolsMenu.vue";
 import RecTools from "@/components/Home/RecTools.vue";
 import {ref} from "vue";
 import ToolsEntries from "@/components/Tools/ToolsEntries.vue";
+import FKit from "@/components/Tools/FKit.vue";
+import SKit from "@/components/Tools/SKit.vue";
 
 export default {
     name: "ToolsView",
-    components: {ToolsEntries, TopBar, RecTools, ToolsMenu},
+    components: {FKit, SKit, ToolsEntries, TopBar, RecTools, ToolsMenu},
 
     setup() {
 
@@ -40,23 +53,43 @@ export default {
 <style scoped>
 .sider-menu {
     height: 100%;
-    width: 200px;
-    margin-top: 80px;
+    width: 230px !important;
+    max-width: 300px !important;
+    margin: 100px 0 10px 20px;
     border-radius: 10px;
     background-color: white;
     position: fixed;
-
 }
 
-.home-content {
-    background: #fff;
-    /*margin-top: 72px;*/
-    margin: 80px 320px 16px 210px;
-    overflow: initial ;
-    border-radius: 10px;
-    text-align: center;
-    padding: 24px;
-}
+.fcontent {
+    min-width: 300px !important;
+    max-width: 300px !important;
+    width: 300px !important;
+    position: fixed;
+    right: 0;
+    margin-right: 900px;
+    margin-top: 100px;
+} 
+
+.scontent {
+    min-width: 300px !important;
+    max-width: 300px !important;
+    width: 300px !important;
+    position: fixed;
+    right: 0;
+    margin-right: 600px;
+    margin-top: 100px;
+} 
+
+.tcontent {
+    min-width: 300px !important;
+    max-width: 300px !important;
+    width: 300px !important;
+    position: fixed;
+    right: 0;
+    margin-right: 300px;
+    margin-top: 100px;
+} 
 
 .right-bar {
     min-width: 300px !important;
@@ -64,8 +97,7 @@ export default {
     width: 300px !important;
     position: fixed;
     right: 0;
-    margin-right: 10px;
-    margin-top: 80px;
+    margin: 100px 20px 16px 0;
 } 
 
 .ant-layout-header {

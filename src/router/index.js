@@ -2,6 +2,7 @@ import HomeView from "@/views/HomeView.vue";
 import ToolsView from "@/views/ToolsView.vue";
 import {createRouter, createWebHistory} from "vue-router";
 import EntryView from "@/views/EntryView.vue";
+import KitView from "@/views/KitView.vue";
 
 const routes = [
     {
@@ -29,6 +30,13 @@ const routes = [
         name: 'entry',
         props: true,
         component: EntryView,
+
+    },
+    {
+        path: '/kit',
+        name: 'kit',
+        props: true,
+        component: KitView,
 
     },
 
