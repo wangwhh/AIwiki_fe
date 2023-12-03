@@ -1,18 +1,23 @@
 <!--词条内容-->
-<!-- TODO: 引入MarkDown -->
 <template>
-    <v-md-preview :include-level="[3, 4]" :text="text" class="vuepress-markdown-body"></v-md-preview>
+    <v-md-preview :text="content_text" class="vuepress-markdown-body"></v-md-preview>
 </template>
 
 <script>
-import test_text from '@/assets/test.js'
-
+import router from "@/router";
+import {ref} from "vue";
+import text from "@/assets/docs/1.js";
 export default {
     name: "EntryContent",
     setup() {
-        const text = test_text;
+        const content_text = ref("");
+        const id = router.currentRoute.value.query.id;
+        content_text.value = text;
+
+
+        console.log(text);
         return {
-            text
+            content_text
         }
     }
 }
