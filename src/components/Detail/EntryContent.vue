@@ -6,18 +6,19 @@
 <script>
 import router from "@/router";
 import {ref} from "vue";
-import text from "@/assets/docs/1.js";
+import axios from "axios";
 export default {
     name: "EntryContent",
-    setup() {
+    setup(props, { emit }) {
         const content_text = ref("");
         const id = router.currentRoute.value.query.id;
-        content_text.value = text;
-
-
-        console.log(text);
+        axios.get(`../../../docs/${id}.md`).then(res => {
+            content_text.value = res.data;
+            emit('content-loaded'); // 发射事件
+            console.log('content text done');
+        })
         return {
-            content_text
+            content_text,
         }
     }
 }

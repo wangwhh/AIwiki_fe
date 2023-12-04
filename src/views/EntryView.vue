@@ -5,7 +5,7 @@
         </a-layout-sider>
         <a-layout>
             <a-layout-content>
-                <EntryContent class="entry-content"/>
+                <EntryContent class="entry-content" @content-loaded="setContentLoaded"/>
             </a-layout-content>
             <a-layout-sider class="entry-right-sider">
                 <Relations/>
@@ -18,7 +18,7 @@
 
 <script>
 import router from "@/router";
-import {onMounted, ref, watchEffect} from "vue";
+import {onMounted, provide, ref, watchEffect} from "vue";
 import EntryContent from "@/components/Detail/EntryContent.vue";
 import Anchor from "@/components/Detail/Anchor.vue";
 import Relations from "@/components/Detail/Relations.vue";
@@ -40,7 +40,7 @@ export default {
         ]);
         //let entry_id = ref(router.currentRoute.value.query.id);
         const entryData = ref(null);
-
+        const contentLoaded = ref(false); // 新增状态
         onMounted(async () => {
             const entryId = router.currentRoute.value.query.id;
             if (entryId) {
@@ -49,8 +49,15 @@ export default {
                 document.title = 'AIWiki - ' + entryData.value.title;
             }
         });
+        const setContentLoaded = () => {
+            contentLoaded.value = true;
+            console.log('content loaded');
+        };
+        provide('contentLoaded', contentLoaded); // 向子组件提供状态
         return {
             tmp_entry_data,
+            contentLoaded,
+            setContentLoaded,
             //entry_id
         }
     },
