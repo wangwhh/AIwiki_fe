@@ -1,5 +1,5 @@
 <template>
-    <a-card v-for="kit in ToolsEntries" class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
+    <a-card v-for="kit in SKit" class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
         <a-flex justify="space-between">
             <img
                 alt="avatar"
@@ -23,25 +23,25 @@ import {ref} from "vue";
 import router from "@/router";
 
 export default {
-    name: "ToolsEntries",
+    name: "FKit",
     setup() {
-        let ToolsEntries = ref([
+        let SKit = ref([
             {
                 img_src: "src/assets/pics/toolpics/chatgpt.png",
-                title: "ChatGPT",
-                id: 1
+                title: "OpenAI",
+                id: 2
             }, {
                 img_src: "src/assets/pics/toolpics/openai.png",
-                title: "Copy.ai",
-                id: 4
+                title: "GPT-4",
+                id: 5
             }, {
                 img_src: "src/assets/pics/toolpics/gpt.png",
-                title: "Midjourney",
-                id: 7
+                title: "快剪辑",
+                id: 8
             }, {
-                img_src: "src/assets/pics/toolpics/openai.png",
-                title: "阿里云智能logo设计",
-                id: 13
+                img_src: "src/assets/pics/toolpics/gpt.png",
+                title: "Bing Image Creator",
+                id: 11
             }
         ]);
 
@@ -59,7 +59,7 @@ export default {
 
 
         return {
-            ToolsEntries,
+            SKit,
             onEntryClicked
         };
     }
