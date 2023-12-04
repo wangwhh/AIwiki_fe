@@ -4,21 +4,26 @@
           <ToolsMenu/>
         </a-layout-sider>
         <a-layout>
-            <a-layout-sider class="fcontent">
-                <a-flex gap="middle" vertical>
-                    <ToolsEntries/>
-                </a-flex>
-            </a-layout-sider>
-            <a-layout-sider class="scontent">
-                <a-flex gap="middle" vertical>
-                    <FKit/>
-                </a-flex>
-            </a-layout-sider>
-            <a-layout-sider class="tcontent">
-                <a-flex gap="middle" vertical>
-                    <SKit/>
-                </a-flex>
-            </a-layout-sider>
+            <a-layout-content>
+                <a-flex class="fcontent">
+                    <a-flex gap="middle" vertical >
+                        <ToolsEntries/>
+                    </a-flex>
+                    
+                    <a-flex class="scontent" >
+                        <a-flex gap="middle" vertical >
+                           <FKit/>
+                        </a-flex>                    
+                    </a-flex>
+
+                    <a-flex class="tcontent" >
+                        <a-flex gap="middle" vertical >
+                           <SKit/>
+                        </a-flex>
+                    </a-flex>                
+                </a-flex>                   
+            </a-layout-content>            
+
             <a-layout-sider class="right-bar">
                 <a-flex gap="middle" vertical>
                     <RecTools/>
@@ -60,8 +65,17 @@ export default {
     background-color: white;
     position: fixed;
 }
-
 .fcontent {
+    /*background: #fff;*/
+    /*margin-top: 72px;*/
+    margin: 100px 340px 16px 270px;
+    overflow: initial ;
+    /*border-radius: 10px;*/
+    text-align: center;
+    /*padding: 24px;*/
+}
+
+.content {
     min-width: 300px !important;
     max-width: 300px !important;
     width: 300px !important;
@@ -72,23 +86,17 @@ export default {
 } 
 
 .scontent {
-    min-width: 300px !important;
-    max-width: 300px !important;
-    width: 300px !important;
-    position: fixed;
-    right: 0;
-    margin-right: 600px;
-    margin-top: 100px;
+    margin-left:40px;
+    overflow: initial ;
+    /*border-radius: 10px;*/
+    text-align: center;
 } 
 
 .tcontent {
-    min-width: 300px !important;
-    max-width: 300px !important;
-    width: 300px !important;
-    position: fixed;
-    right: 0;
-    margin-right: 300px;
-    margin-top: 100px;
+    margin-left:40px;
+    overflow: initial ;
+    /*border-radius: 10px;*/
+    text-align: center;
 } 
 
 .right-bar {
