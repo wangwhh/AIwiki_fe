@@ -8,17 +8,20 @@
                 <a-flex class="fcontent">
                     <a-flex gap="middle" vertical >
                         <ToolsEntries/>
+                        <ToolsEntries/>
                     </a-flex>
                     
                     <a-flex class="scontent" >
                         <a-flex gap="middle" vertical >
                            <FKit/>
+                           <ToolsEntries/>
                         </a-flex>                    
                     </a-flex>
 
                     <a-flex class="tcontent" >
                         <a-flex gap="middle" vertical >
                            <SKit/>
+                           <ToolsEntries/>
                         </a-flex>
                     </a-flex>                
                 </a-flex>                   

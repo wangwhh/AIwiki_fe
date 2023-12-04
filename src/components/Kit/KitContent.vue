@@ -1,6 +1,6 @@
 <!--词条内容-->
 <template>
-    <v-md-preview :text="content_text" class="vuepress-markdown-body"></v-md-preview>
+    
 </template>
 
 <script>

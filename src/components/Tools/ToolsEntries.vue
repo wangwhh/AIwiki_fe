@@ -39,7 +39,7 @@ export default {
                 title: "Midjourney",
                 id: 7
             }, {
-                img_src: "src/assets/pics/toolpics/gpt.png",
+                img_src: "src/assets/pics/toolpics/openai.png",
                 title: "阿里云智能logo设计",
                 id: 13
             }

@@ -1,5 +1,5 @@
 <template>
-    <a-card v-for="kit in FKit" class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
+    <a-card v-for="kit in SKit" class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
         <a-flex justify="space-between">
             <img
                 alt="avatar"
@@ -25,24 +25,24 @@ import router from "@/router";
 export default {
     name: "FKit",
     setup() {
-        let FKit = ref([
+        let SKit = ref([
             {
                 img_src: "src/assets/pics/toolpics/chatgpt.png",
-                title: "Midjourney",
-                id: 3
+                title: "OpenAI",
+                id: 2
             }, {
                 img_src: "src/assets/pics/toolpics/openai.png",
-                title: "文心一言",
-                id: 6
-            },{
-                img_src: "src/assets/pics/toolpics/gpt.png",
-                title: "Upscayl",
-                id: 9
+                title: "GPT-4",
+                id: 5
             }, {
-                img_src: "src/assets/pics/toolpics/chatgpt.png",
-                title: "Stable Diffusion",
-                id: 12
-            },
+                img_src: "src/assets/pics/toolpics/gpt.png",
+                title: "快剪辑",
+                id: 8
+            }, {
+                img_src: "src/assets/pics/toolpics/gpt.png",
+                title: "Bing Image Creator",
+                id: 11
+            }
         ]);
 
 
@@ -59,7 +59,7 @@ export default {
 
 
         return {
-            FKit,
+            SKit,
             onEntryClicked
         };
     }
@@ -77,4 +77,5 @@ export default {
     display: block;
     height: 100px;
 }
+
 </style>

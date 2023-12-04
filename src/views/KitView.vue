@@ -1,18 +1,17 @@
 <template>
     <a-layout>
         <a-layout-sider class="kit-sider">
-            <KitAnchor/>
+            <ToolsMenu/>
         </a-layout-sider>
         <a-layout>
             <a-layout-content>
                 <KitContent class="kit-content"/>
             </a-layout-content>
             <a-layout-sider class="kit-right-sider">
-                <KitRelations/>
+                <RecTools/>
             </a-layout-sider>
         </a-layout>
     </a-layout>
-
 
 </template>
 
@@ -20,16 +19,18 @@
 import router from "@/router";
 import {onMounted, ref, watchEffect} from "vue";
 import KitContent from "@/components/Kit/KitContent.vue";
+import ToolsMenu from "@/components/Tools/ToolsMenu.vue";
 import KitAnchor from "@/components/Kit/KitAnchor.vue";
+import RecTools from "@/components/Home/RecTools.vue";
 import KitRelations from "@/components/Kit/KitRelations.vue";
 export default {
     name: "EntryView",
-    components: {KitRelations, KitContent, KitAnchor},
+    components: {KitRelations, KitContent, KitAnchor, ToolsMenu, RecTools},
     setup() {
         // 这个是临时的，之后使用get request获取
         const tmp_kit_data = ref([{
             id: 1,
-            title: 'LoRA',
+            title: 'ChatGPT',
           },{
             id: 2,
             title: 'RLHF',
@@ -59,28 +60,26 @@ export default {
 
 <style scoped>
 .kit-content {
-    margin: 100px 300px 20px 320px;
+    margin: 100px 340px 16px 270px;
     overflow: initial;
 }
 .kit-sider {
-    max-width: 270px !important;
-    width : 270px !important;
+    height: 100%;
+    width: 230px !important;
+    max-width: 300px !important;
     margin: 100px 0 10px 20px;
-    background: white;
     border-radius: 10px;
-    padding: 20px 20px 20px 10px;
+    background-color: white;
     position: fixed;
-    overflow: auto ;
-    height: calc(100vh - 120px);
 }
 
 .kit-right-sider {
-    min-width: 270px !important;
+    min-width: 300px !important;
     max-width: 300px !important;
-    width: 270px !important;
+    width: 300px !important;
     position: fixed;
     right: 0;
-    margin: 100px 10px 16px 0;
+    margin: 100px 20px 16px 0;
     background: white;
     border-radius: 10px;
 }
