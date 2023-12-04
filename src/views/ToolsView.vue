@@ -4,27 +4,8 @@
           <ToolsMenu/>
         </a-layout-sider>
         <a-layout>
-            <a-layout-content>
-                <a-flex class="fcontent">
-                    <a-flex gap="middle" vertical >
-                        <ToolsEntries/>
-                        <ToolsEntries/>
-                    </a-flex>
-                    
-                    <a-flex class="scontent" >
-                        <a-flex gap="middle" vertical >
-                           <FKit/>
-                           <ToolsEntries/>
-                        </a-flex>                    
-                    </a-flex>
-
-                    <a-flex class="tcontent" >
-                        <a-flex gap="middle" vertical >
-                           <SKit/>
-                           <ToolsEntries/>
-                        </a-flex>
-                    </a-flex>                
-                </a-flex>                   
+            <a-layout-content class="fcontent">
+                <ToolsEntries/>
             </a-layout-content>            
 
             <a-layout-sider class="right-bar">
@@ -69,38 +50,9 @@ export default {
     position: fixed;
 }
 .fcontent {
-    /*background: #fff;*/
-    /*margin-top: 72px;*/
     margin: 100px 340px 16px 270px;
-    overflow: initial ;
-    /*border-radius: 10px;*/
-    text-align: center;
-    /*padding: 24px;*/
 }
 
-.content {
-    min-width: 300px !important;
-    max-width: 300px !important;
-    width: 300px !important;
-    position: fixed;
-    right: 0;
-    margin-right: 900px;
-    margin-top: 100px;
-} 
-
-.scontent {
-    margin-left:40px;
-    overflow: initial ;
-    /*border-radius: 10px;*/
-    text-align: center;
-} 
-
-.tcontent {
-    margin-left:40px;
-    overflow: initial ;
-    /*border-radius: 10px;*/
-    text-align: center;
-} 
 
 .right-bar {
     min-width: 300px !important;

@@ -5,7 +5,7 @@
         </a-layout-sider>
         <a-layout>
             <a-layout-content>
-                <KitContent class="kit-content"/>
+<!--                <KitContent class="kit-content"/>-->
             </a-layout-content>
             <a-layout-sider class="kit-right-sider">
                 <RecTools/>

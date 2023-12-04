@@ -6,7 +6,7 @@
 <script>
 import router from "@/router";
 import {ref} from "vue";
-import text from "@/assets/docs/1.js";
+
 export default {
     name: "EntryContent",
     setup() {
