@@ -1,5 +1,7 @@
 <template>
-    <div class="logo" />
+    <router-link to="/home">
+        <img src="@/assets/pics/top_logo.png" class="logo" alt="AI百科全书">
+    </router-link>
     <a-menu
             v-model:selectedKeys="selectedKeys1"
             mode="horizontal"
@@ -61,10 +63,8 @@ export default {
 <style scoped>
 .logo {
     float: left;
-    width: 120px;
-    height: 31px;
+    height: 50px;
     margin: 16px 24px 16px 0;
-    background: #34A8FA4C;
 }
 .head-right-bar {
     position: absolute;
