@@ -2,7 +2,6 @@ import HomeView from "@/views/HomeView.vue";
 import ToolsView from "@/views/ToolsView.vue";
 import {createRouter, createWebHistory} from "vue-router";
 import EntryView from "@/views/EntryView.vue";
-import KitView from "@/views/KitView.vue";
 import IndexView from "@/views/IndexView.vue";
 import ChatView from "@/views/ChatView.vue";
 
@@ -43,12 +42,6 @@ const routes = [
 
     },
     {
-        path: '/kit',
-        name: 'kit',
-        props: true,
-        component: KitView,
-
-    },{
         path: '/chat',
         name: 'chat',
         props: true,
