@@ -7,7 +7,7 @@
             <router-view/>
         </a-layout-content>
     </a-layout>
-
+    <a-back-top />
 </template>
 
 <script>

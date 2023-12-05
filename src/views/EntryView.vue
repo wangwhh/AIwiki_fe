@@ -22,22 +22,12 @@ import {onMounted, provide, ref, watchEffect} from "vue";
 import EntryContent from "@/components/Detail/EntryContent.vue";
 import Anchor from "@/components/Detail/Anchor.vue";
 import Relations from "@/components/Detail/Relations.vue";
+import entries from "@/assets/entries_all";
+
 export default {
     name: "EntryView",
     components: {Relations, EntryContent, Anchor},
     setup() {
-        // 这个是临时的，之后使用get request获取
-        const tmp_entry_data = ref([{
-            id: 1,
-            title: 'LoRA',
-          },{
-            id: 2,
-            title: 'RLHF',
-          },{
-            id: 3,
-            title: 'CNN',
-        }
-        ]);
         //let entry_id = ref(router.currentRoute.value.query.id);
         const entryData = ref(null);
         const contentLoaded = ref(false); // 新增状态
@@ -45,7 +35,7 @@ export default {
             const entryId = router.currentRoute.value.query.id;
             if (entryId) {
                 // entryData.value = await fetchEntryData(entryId);
-                entryData.value = tmp_entry_data.value.find(e => e.id.toString() === entryId);
+                entryData.value = entries.value[entryId - 1];
                 document.title = 'AIWiki - ' + entryData.value.title;
             }
         });
@@ -55,7 +45,6 @@ export default {
         };
         provide('contentLoaded', contentLoaded); // 向子组件提供状态
         return {
-            tmp_entry_data,
             contentLoaded,
             setContentLoaded,
             //entry_id

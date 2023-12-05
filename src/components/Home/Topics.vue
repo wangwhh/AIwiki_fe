@@ -21,35 +21,16 @@
 <script>
 import {ref} from "vue";
 import router from "@/router";
+import entries from "@/assets/entries_all";
 
 export default {
     name: "Topics",
     setup() {
-        let topics = ref([
-            {
-                img_src: "src/assets/pics/topicPics/what-is-lora.png",
-                title: "什么是LoRA？一文读懂低秩适应的概念、原理、优缺点和主要应用",
-                id: 1
-            }, {
-                img_src: "src/assets/pics/topicPics/what-is-rlhf.png",
-                title: "什么是RLHF基于人类反馈的强化学习？",
-                id: 2
-            }, {
-                img_src: "src/assets/pics/topicPics/convolutional-neural-network-1.png",
-                title: "卷积神经网络（CNN）是什么？一文读懂卷积神经网络的概念、原理、优缺点和主要应用",
-                id: 3
-            }, {
-                img_src: "src/assets/pics/topicPics/what-is-sentiment-analysis-1.png",
-                title: "情感分析",
-                id: 4
-            }, {
-                img_src: "src/assets/pics/topicPics/data-annotation.png",
-                title: "数据标注",
-                id: 5
-            }
-        ]);
-
-
+        const topics_id = ref([1, 2, 3, 4, 5]);
+        let topics = ref([]);
+        topics_id.value.forEach((id) => {
+            topics.value.push(entries.value[id - 1]);
+        });
         function onEntryClicked(topic) {
             let new_page = router.resolve({
                 path:'/entry/' ,
