@@ -23,9 +23,9 @@
         <router-link to="/tools">
             <a-menu-item key="3">工具集</a-menu-item>
         </router-link>
-<!--        <router-link to="/tools">-->
+       <router-link to="/chat">
             <a-menu-item key="4">AI问答</a-menu-item>
-<!--        </router-link>-->
+       </router-link>
     </a-menu>
     <a-flex gap="large" align="center" horizotal class="head-right-bar">
         <a-input-search
