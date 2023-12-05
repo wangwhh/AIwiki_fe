@@ -15,7 +15,6 @@ export default {
         axios.get(`../../../docs/${id}.md`).then(res => {
             content_text.value = res.data;
             emit('content-loaded'); // 发射事件
-            console.log('content text done');
         })
         return {
             content_text,

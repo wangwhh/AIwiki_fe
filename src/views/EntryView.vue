@@ -41,7 +41,6 @@ export default {
         });
         const setContentLoaded = () => {
             contentLoaded.value = true;
-            console.log('content loaded');
         };
         provide('contentLoaded', contentLoaded); // 向子组件提供状态
         return {

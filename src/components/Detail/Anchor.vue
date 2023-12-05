@@ -25,9 +25,9 @@ export default {
         }
 
         function getTitles() {
-            console.log('getTitles')
+            // console.log('getTitles')
             const anchors = ref(document.querySelectorAll('.entry-content h2, .entry-content h3'));
-            console.log(anchors.value);
+            // console.log(anchors.value);
             const titles = Array.from(anchors.value).filter((title) => !!title.innerText.trim());
             items.value = titles.map((title) => ({
                 key: titles.indexOf(title),

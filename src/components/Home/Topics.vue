@@ -1,3 +1,4 @@
+<!--Topics.vue-->
 <template>
     <a-card v-for="topic in topics" class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
         <a-flex justify="space-between">
@@ -19,17 +20,21 @@
 </template>
 
 <script>
-import {ref} from "vue";
+import {inject, ref, watch} from "vue";
 import router from "@/router";
 import entries from "@/assets/entries_all";
 
 export default {
     name: "Topics",
     setup() {
-        const topics_id = ref([1, 2, 3, 4, 5]);
+        const selectedKeys = inject('selectedKeys');
         let topics = ref([]);
-        topics_id.value.forEach((id) => {
-            topics.value.push(entries.value[id - 1]);
+        function getTopics() {
+            topics.value = entries.value.filter(entry => entry.category === selectedKeys.value[0]);
+        }
+        getTopics();
+        watch(selectedKeys, (newKey) => {
+            getTopics();
         });
         function onEntryClicked(topic) {
             let new_page = router.resolve({

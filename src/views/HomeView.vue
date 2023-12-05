@@ -1,7 +1,8 @@
+<!--HomeView.vue-->
 <template>
     <a-layout>
         <a-layout-sider class="sider-menu" >
-          <Menu/>
+          <HomeMenu/>
         </a-layout-sider>
         <a-layout>
             <a-layout-content class="home-content">
@@ -20,18 +21,22 @@
 
 <script>
 import TopBar from "@/components/Menu/TopBar.vue";
-import Menu from "@/components/Menu/Menu.vue";
+import HomeMenu from "@/components/Home/HomeMenu.vue";
 import GoodEntry from "@/components/Home/GoodEntry.vue";
 import RecTools from "@/components/Home/RecTools.vue";
-import {ref} from "vue";
+import {provide, ref} from "vue";
 import Topics from "@/components/Home/Topics.vue";
 
 export default {
     name: "HomeView",
-    components: {Topics, RecTools, GoodEntry, TopBar, Menu},
+    components: {Topics, RecTools, GoodEntry, TopBar, HomeMenu},
 
     setup() {
-
+        let selectedKeys = ref(['home']);
+        provide('selectedKeys', selectedKeys); // 向子组件提供状态
+        return {
+            selectedKeys,
+        };
     },
 
 }

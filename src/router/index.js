@@ -3,6 +3,7 @@ import ToolsView from "@/views/ToolsView.vue";
 import {createRouter, createWebHistory} from "vue-router";
 import EntryView from "@/views/EntryView.vue";
 import KitView from "@/views/KitView.vue";
+import IndexView from "@/views/IndexView.vue";
 
 const routes = [
     {
@@ -15,7 +16,15 @@ const routes = [
         component: HomeView,
         meta: {
             title: 'AI百科全书系统',
-        },
+        }
+    },
+    {
+        path: '/index',
+        name: 'index',
+        component: IndexView,
+        meta: {
+            title: 'AI百科全书系统',
+        }
     },
     {
         path: '/tools',

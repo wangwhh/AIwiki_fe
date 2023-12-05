@@ -10,9 +10,22 @@
         <router-link to="/home">
             <a-menu-item key="1">词条展示</a-menu-item>
         </router-link>
-        <router-link to="/tools">
-            <a-menu-item key="2">工具集</a-menu-item>
+        <router-link to="/index">
+            <a-sub-menu key="2">
+                <template #title>
+                  <span>
+                    词条索引
+                  </span>
+                </template>
+                <a-menu-item key="2-1">词典索引</a-menu-item>
+                <a-menu-item key="2-2">分类索引</a-menu-item></a-sub-menu>
         </router-link>
+        <router-link to="/tools">
+            <a-menu-item key="3">工具集</a-menu-item>
+        </router-link>
+<!--        <router-link to="/tools">-->
+            <a-menu-item key="4">AI问答</a-menu-item>
+<!--        </router-link>-->
     </a-menu>
     <a-flex gap="large" align="center" horizotal class="head-right-bar">
         <a-input-search
