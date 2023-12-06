@@ -16,7 +16,7 @@
             </template>
             <a-menu-item key="understanding">一文读懂系列</a-menu-item>
             <a-menu-item key="news">前沿资讯</a-menu-item>
-            <a-menu-item key="knowledge_map">知识图谱</a-menu-item>
+            <a-menu-item key="knowledge_map">学习路径</a-menu-item>
         </a-sub-menu>
         <a-menu-item key="hot_entry">
             热门词条

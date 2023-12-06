@@ -22,7 +22,7 @@
 <script>
 import {inject, ref, watch} from "vue";
 import router from "@/router";
-import entries from "@/assets/entries_all";
+import topics_all from "@/assets/topics_all";
 
 export default {
     name: "Topics",
@@ -30,7 +30,7 @@ export default {
         const selectedKeys = inject('selectedKeys');
         let topics = ref([]);
         function getTopics() {
-            topics.value = entries.value.filter(entry => entry.category === selectedKeys.value[0]);
+            topics.value = topics_all.value.filter(entry => entry.category === selectedKeys.value[0]);
         }
         getTopics();
         watch(selectedKeys, (newKey) => {

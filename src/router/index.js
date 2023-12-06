@@ -3,7 +3,8 @@ import ToolsView from "@/views/ToolsView.vue";
 import {createRouter, createWebHistory} from "vue-router";
 import EntryView from "@/views/EntryView.vue";
 import KitView from "@/views/KitView.vue";
-import IndexView from "@/views/IndexView.vue";
+import DictView from "@/views/DictView.vue";
+import ClassView from "@/views/ClassView.vue";
 
 const routes = [
     {
@@ -14,14 +15,6 @@ const routes = [
         path: '/home',
         name: 'home',
         component: HomeView,
-        meta: {
-            title: 'AI百科全书系统',
-        }
-    },
-    {
-        path: '/index',
-        name: 'index',
-        component: IndexView,
         meta: {
             title: 'AI百科全书系统',
         }
@@ -39,7 +32,6 @@ const routes = [
         name: 'entry',
         props: true,
         component: EntryView,
-
     },
     {
         path: '/kit',
@@ -48,7 +40,22 @@ const routes = [
         component: KitView,
 
     },
-
+    {
+        path: '/dict',
+        name: 'dict',
+        component: DictView,
+        meta: {
+            title: '词典索引',
+        },
+    },
+    {
+        path: '/class',
+        name: 'class',
+        component: ClassView,
+        meta: {
+            title: '分类索引',
+        },
+    },
 ]
 const router = new createRouter({
     history: createWebHistory(),

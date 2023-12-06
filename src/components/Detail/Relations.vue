@@ -13,7 +13,7 @@
 <script>
 
 import {ref} from "vue";
-import entries from "@/assets/entries_all";
+import topics_all from "@/assets/topics_all";
 import router from "@/router";
 export default {
     name: "Relations",
@@ -21,7 +21,7 @@ export default {
       const relate_entries_id = ref([5, 6, 7, 8, 9]);
       let relate_entries = ref([]);
       relate_entries_id.value.forEach((id) => {
-          relate_entries.value.push(entries.value[id - 1]);
+          relate_entries.value.push(topics_all.value[id - 1]);
       });
       function onEntryClicked(entry) {
           let new_page = router.resolve({

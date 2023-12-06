@@ -11,7 +11,7 @@
 
 <script>
 import {ref} from "vue";
-import entries from "@/assets/entries_all";
+import topics_all from "@/assets/topics_all";
 import router from "@/router";
 
 export default {
@@ -20,7 +20,7 @@ export default {
         const good_entries_id = ref([2, 5, 8, 10, 12])
         let good_entries = ref([]);
         good_entries_id.value.forEach((id) => {
-            good_entries.value.push(entries.value[id - 1]);
+            good_entries.value.push(topics_all.value[id - 1]);
         });
         function onEntryClicked(entry) {
             let new_page = router.resolve({

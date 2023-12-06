@@ -22,7 +22,7 @@ import {onMounted, provide, ref, watchEffect} from "vue";
 import EntryContent from "@/components/Detail/EntryContent.vue";
 import Anchor from "@/components/Detail/Anchor.vue";
 import Relations from "@/components/Detail/Relations.vue";
-import entries from "@/assets/entries_all";
+import topics_all from "@/assets/topics_all";
 
 export default {
     name: "EntryView",
@@ -35,7 +35,7 @@ export default {
             const entryId = router.currentRoute.value.query.id;
             if (entryId) {
                 // entryData.value = await fetchEntryData(entryId);
-                entryData.value = entries.value[entryId - 1];
+                entryData.value = topics_all.value[entryId - 1];
                 document.title = 'AIWiki - ' + entryData.value.title;
             }
         });
