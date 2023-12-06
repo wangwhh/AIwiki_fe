@@ -4,7 +4,7 @@
           <ToolsMenu/>
         </a-layout-sider>
         <a-layout>
-            <a-layout-content class="fcontent">
+            <a-layout-content class="content">
                 <ToolsEntries/>
             </a-layout-content>            
 
@@ -25,12 +25,10 @@ import ToolsMenu from "@/components/Tools/ToolsMenu.vue";
 import RecTools from "@/components/Home/RecTools.vue";
 import {ref} from "vue";
 import ToolsEntries from "@/components/Tools/ToolsEntries.vue";
-import FKit from "@/components/Tools/FKit.vue";
-import SKit from "@/components/Tools/SKit.vue";
 
 export default {
     name: "ToolsView",
-    components: {FKit, SKit, ToolsEntries, TopBar, RecTools, ToolsMenu},
+    components: {ToolsEntries, TopBar, RecTools, ToolsMenu},
 
     setup() {
 
@@ -49,7 +47,7 @@ export default {
     background-color: white;
     position: fixed;
 }
-.fcontent {
+.content {
     margin: 100px 340px 16px 270px;
 }
 

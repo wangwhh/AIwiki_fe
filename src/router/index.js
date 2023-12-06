@@ -2,9 +2,9 @@ import HomeView from "@/views/HomeView.vue";
 import ToolsView from "@/views/ToolsView.vue";
 import {createRouter, createWebHistory} from "vue-router";
 import EntryView from "@/views/EntryView.vue";
-import KitView from "@/views/KitView.vue";
 import DictView from "@/views/DictView.vue";
 import ClassView from "@/views/ClassView.vue";
+import ChatView from "@/views/ChatView.vue";
 
 const routes = [
     {
@@ -34,10 +34,10 @@ const routes = [
         component: EntryView,
     },
     {
-        path: '/kit',
-        name: 'kit',
+        path: '/chat',
+        name: 'chat',
         props: true,
-        component: KitView,
+        component: ChatView,
 
     },
     {
