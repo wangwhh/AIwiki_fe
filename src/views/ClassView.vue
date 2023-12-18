@@ -7,7 +7,7 @@
                     {{category}}
                 </a-divider>
                 <a-flex wrap="wrap" gap="large">
-                    <a-button v-for="entry in group" type="link">
+                    <a-button v-for="entry in group" type="link" @click="onEntryClicked(entry)">
                         {{entry.title}}
                     </a-button>
                 </a-flex>
@@ -19,6 +19,7 @@
 <script>
 import {computed, ref} from "vue";
 import entries_all from "@/assets/entries_all.js";
+import router from "@/router";
 export default {
     name: "ClassView",
     setup() {
@@ -34,9 +35,18 @@ export default {
             });
             return groups;
         });
-
+        function onEntryClicked(entry) {
+            let new_page = router.resolve({
+                path:'/entry/' ,
+                query: {
+                    id: entry.id
+                }
+            });
+            window.open(new_page.href, '_blank');
+        }
         return {
-            groupedEntries
+            groupedEntries,
+            onEntryClicked
         };
     }
 }

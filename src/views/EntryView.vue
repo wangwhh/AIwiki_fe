@@ -9,6 +9,7 @@
             </a-layout-content>
             <a-layout-sider class="entry-right-sider">
                 <Relations/>
+                <Buttons class="buttons"/>
             </a-layout-sider>
         </a-layout>
     </a-layout>
@@ -23,10 +24,11 @@ import EntryContent from "@/components/Detail/EntryContent.vue";
 import Anchor from "@/components/Detail/Anchor.vue";
 import Relations from "@/components/Detail/Relations.vue";
 import topics_all from "@/assets/topics_all";
+import Buttons from "@/components/Detail/Buttons.vue";
 
 export default {
     name: "EntryView",
-    components: {Relations, EntryContent, Anchor},
+    components: {Buttons, Relations, EntryContent, Anchor},
     setup() {
         //let entry_id = ref(router.currentRoute.value.query.id);
         const entryData = ref(null);
@@ -76,7 +78,10 @@ export default {
     position: fixed;
     right: 0;
     margin: 100px 10px 16px 0;
-    background: white;
+    background: rgba(255, 255, 255, 0);
     border-radius: 10px;
+}
+.buttons {
+    margin: 20px 0 0 0;
 }
 </style>

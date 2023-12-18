@@ -5,6 +5,7 @@ import EntryView from "@/views/EntryView.vue";
 import DictView from "@/views/DictView.vue";
 import ClassView from "@/views/ClassView.vue";
 import ChatView from "@/views/ChatView.vue";
+import EditView from "@/views/EditView.vue";
 
 const routes = [
     {
@@ -32,6 +33,12 @@ const routes = [
         name: 'entry',
         props: true,
         component: EntryView,
+    },
+    {
+        path: '/edit',
+        name: 'edit',
+        props: true,
+        component: EditView,
     },
     {
         path: '/chat',

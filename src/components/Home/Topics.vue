@@ -38,7 +38,7 @@ export default {
         });
         function onEntryClicked(topic) {
             let new_page = router.resolve({
-                path:'/entry/' ,
+                path:'/entry' ,
                 query: {
                     id: topic.id
                 }
