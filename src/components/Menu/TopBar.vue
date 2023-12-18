@@ -39,32 +39,22 @@
                 @search="onSearch"
                 style="width: 300px; margin-right: 30px"
         />
-        <a-popover placement="bottom">
-            <template #content>
-                <p><a-button type="text">登录账号</a-button></p>
-                <a-button type="text">注册账号</a-button>
-            </template>
-            <a-avatar :size="58">
-                <template #icon>
-                    <AntDesignOutlined />
-                </template>
-            </a-avatar>
-        </a-popover>
+        <TopAvatar/>
     </a-flex>
 
 </template>
 
 <script>
 import {AntDesignOutlined} from "@ant-design/icons-vue";
-import {ref} from "vue";
+import {inject, ref} from "vue";
+import TopAvatar from "@/components/Menu/TopAvatar.vue";
 const value = ref('');
 const selectedKeys1 = ref(['1']);
 
 export default {
     name: "TopBar",
-    components: {AntDesignOutlined},
+    components: {TopAvatar, AntDesignOutlined},
     setup() {
-
         function onSearch(value) {
             console.log(value);
         }
