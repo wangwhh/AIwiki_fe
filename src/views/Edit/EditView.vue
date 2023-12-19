@@ -13,7 +13,7 @@
 
 <script>
 
-import EditContent from "@/components/Edit/EditContent.vue";
+import EditContent from "@/views/Edit/components/EditContent.vue";
 import {CheckCircleOutlined} from "@ant-design/icons-vue";
 
 export default {

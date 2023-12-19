@@ -20,11 +20,11 @@
 <script>
 import router from "@/router";
 import {onMounted, provide, ref, watchEffect} from "vue";
-import EntryContent from "@/components/Detail/EntryContent.vue";
-import Anchor from "@/components/Detail/Anchor.vue";
-import Relations from "@/components/Detail/Relations.vue";
+import EntryContent from "@/views/Detail/components/EntryContent.vue";
+import Anchor from "@/views/Detail/components/Anchor.vue";
+import Relations from "@/views/Detail/components/Relations.vue";
 import topics_all from "@/assets/topics_all";
-import Buttons from "@/components/Detail/Buttons.vue";
+import Buttons from "@/views/Detail/components/Buttons.vue";
 
 export default {
     name: "EntryView",

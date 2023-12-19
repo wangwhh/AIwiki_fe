@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import TopBar from "@/components/Menu/TopBar.vue";
-import HomeMenu from "@/components/Home/HomeMenu.vue";
-import GoodEntry from "@/components/Home/GoodEntry.vue";
-import RecTools from "@/components/Home/RecTools.vue";
+import TopBar from "@/components/TopBar.vue";
+import HomeMenu from "@/views/Home/components/HomeMenu.vue";
+import GoodEntry from "@/views/Home/components/GoodEntry.vue";
+import RecTools from "@/views/Home/components/RecTools.vue";
 import {provide, ref} from "vue";
-import Topics from "@/components/Home/Topics.vue";
+import Topics from "@/views/Home/components/Topics.vue";
 
 export default {
     name: "HomeView",

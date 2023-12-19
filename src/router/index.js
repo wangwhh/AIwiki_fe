@@ -1,11 +1,12 @@
-import HomeView from "@/views/HomeView.vue";
-import ToolsView from "@/views/ToolsView.vue";
+import HomeView from "@/views/Home/HomeView.vue";
+import ToolsView from "@/views/Tools/ToolsView.vue";
 import {createRouter, createWebHistory} from "vue-router";
-import EntryView from "@/views/EntryView.vue";
-import DictView from "@/views/DictView.vue";
-import ClassView from "@/views/ClassView.vue";
+import EntryView from "@/views/Detail/EntryView.vue";
+import DictView from "@/views/Index/index/DictView.vue";
+import ClassView from "@/views/Index/index/ClassView.vue";
 import ChatView from "@/views/ChatView.vue";
-import EditView from "@/views/EditView.vue";
+import EditView from "@/views/Edit/EditView.vue";
+import IndexView from "@/views/Index/IndexView.vue";
 
 const routes = [
     {
@@ -48,20 +49,27 @@ const routes = [
 
     },
     {
-        path: '/dict',
-        name: 'dict',
-        component: DictView,
-        meta: {
-            title: '词典索引',
-        },
-    },
-    {
-        path: '/class',
-        name: 'class',
-        component: ClassView,
-        meta: {
-            title: '分类索引',
-        },
+        path: '/index',
+        name: 'index',
+        component: IndexView,
+        children:[
+            {
+                path: 'dict',
+                name: 'dict',
+                component: DictView,
+                meta: {
+                    title: '字典索引',
+                },
+            },
+            {
+                path: 'class',
+                name: 'class',
+                component: ClassView,
+                meta: {
+                    title: '分类索引',
+                },
+            }
+        ]
     },
 ]
 const router = new createRouter({

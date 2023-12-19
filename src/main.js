@@ -28,8 +28,3 @@ app.use(router);
 app.use(VueMarkdownEditor);
 app.use(VMdPreview);
 app.use(Antd).mount('#app');
-
-app.provide('global', {
-    isLogin: false,
-})
-app.config.globalProperties.$isLogin = false;

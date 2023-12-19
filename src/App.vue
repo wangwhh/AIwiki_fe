@@ -13,7 +13,7 @@
 <script>
 
 import {defineComponent} from "vue";
-import TopBar from "@/components/Menu/TopBar.vue";
+import TopBar from "@/components/TopBar.vue";
 
 export default defineComponent({
     components: {TopBar}

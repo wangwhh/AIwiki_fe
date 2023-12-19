@@ -1,6 +1,6 @@
 <template>
     <router-link to="/home">
-        <img src="@/assets/pics/top_logo.png" class="logo" alt="AI百科全书">
+        <img src="../assets/pics/top_logo.png" class="logo" alt="AI百科全书">
     </router-link>
     <a-menu
             v-model:selectedKeys="selectedKeys1"
@@ -17,10 +17,10 @@
                 词条索引
               </span>
             </template>
-            <router-link to="/dict">
+            <router-link to="/index/dict">
                 <a-menu-item key="2-1">词典索引</a-menu-item>
             </router-link>
-            <router-link to="/class">
+            <router-link to="/index/class">
                 <a-menu-item key="2-2">分类索引</a-menu-item>
             </router-link>
         </a-sub-menu>
@@ -47,7 +47,7 @@
 <script>
 import {AntDesignOutlined} from "@ant-design/icons-vue";
 import {inject, ref} from "vue";
-import TopAvatar from "@/components/Menu/TopAvatar.vue";
+import TopAvatar from "@/components/TopAvatar.vue";
 const value = ref('');
 const selectedKeys1 = ref(['1']);
 
