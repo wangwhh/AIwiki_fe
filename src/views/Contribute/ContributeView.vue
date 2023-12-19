@@ -6,18 +6,18 @@
                     <CheckCircleOutlined/>
                 </template>
             </a-float-button>
-            <EditContent/>
+            <router-view/>
         </a-layout-content>
     </a-layout>
 </template>
 
 <script>
 
-import EditContent from "@/views/Edit/components/EditContent.vue";
+import EditContent from "@/views/Contribute/components/EditContent.vue";
 import {CheckCircleOutlined} from "@ant-design/icons-vue";
 
 export default {
-    name: "EditView",
+    name: "ContributeView",
     components: {EditContent, CheckCircleOutlined},
 
     setup() {
@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .edit-content {
-    margin: 100px 100px 50px 100px;
-    height: 80%;
+    margin: 100px 100px 0 100px;
+    height: calc(100vh - 150px)
 }
 </style>

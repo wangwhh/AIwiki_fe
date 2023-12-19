@@ -1,12 +1,16 @@
 import HomeView from "@/views/Home/HomeView.vue";
 import ToolsView from "@/views/Tools/ToolsView.vue";
 import {createRouter, createWebHistory} from "vue-router";
-import EntryView from "@/views/Detail/EntryView.vue";
+import EntryView from "@/views/Entry/EntryView.vue";
 import DictView from "@/views/Index/index/DictView.vue";
 import ClassView from "@/views/Index/index/ClassView.vue";
-import ChatView from "@/views/ChatView.vue";
-import EditView from "@/views/Edit/EditView.vue";
+import ChatView from "@/views/Chat/ChatView.vue";
+import ContributeView from "@/views/Contribute/ContributeView.vue";
 import IndexView from "@/views/Index/IndexView.vue";
+import UserView from "@/views/User/UserView.vue";
+import UserInfo from "@/views/User/index/UserInfo.vue";
+import EditContent from "@/views/Contribute/components/EditContent.vue";
+import AddContent from "@/views/Contribute/components/AddContent.vue";
 
 const routes = [
     {
@@ -36,10 +40,28 @@ const routes = [
         component: EntryView,
     },
     {
-        path: '/edit',
-        name: 'edit',
+        path: '/contrib',
+        name: 'contrib',
         props: true,
-        component: EditView,
+        component: ContributeView,
+        children: [
+            {
+                path: 'edit',
+                name: 'edit',
+                component: EditContent,
+                meta: {
+                    title: '编辑词条',
+                },
+            },
+            {
+                path: 'add',
+                name: 'add',
+                component: AddContent,
+                meta: {
+                    title: '添加词条',
+                },
+            },
+        ]
     },
     {
         path: '/chat',
@@ -69,6 +91,30 @@ const routes = [
                     title: '分类索引',
                 },
             }
+        ]
+    },
+    {
+        path: '/user',
+        name: 'user',
+        component: UserView,
+        children:[
+            {
+                path: 'info',
+                name: 'info',
+                component: UserInfo,
+                meta: {
+                    title: '用户信息',
+                },
+            },
+            // 看情况实现？
+            // {
+            //     path: '',
+            //     name: '',
+            //     component: ,
+            //     meta: {
+            //         title: '贡献记录',
+            //     },
+            // }
         ]
     },
 ]

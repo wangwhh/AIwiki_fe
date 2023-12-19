@@ -1,5 +1,5 @@
 <template>
-    <v-md-editor v-model="text"></v-md-editor>
+    <v-md-editor v-model="text" height="100%"></v-md-editor>
 </template>
 
 <script>
@@ -28,5 +28,8 @@ export default {
 </script>
 
 <style scoped>
-
+.edit-content {
+    margin: 100px 100px 0 100px;
+    height: calc(100vh - 150px)
+}
 </style>
