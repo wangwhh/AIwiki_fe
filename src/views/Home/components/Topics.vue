@@ -20,21 +20,21 @@
 </template>
 
 <script>
-import {inject, ref, watch} from "vue";
+import {inject, onMounted, ref, watch} from "vue";
 import router from "@/router";
-import topics_all from "@/assets/topics_all";
+import {fetchTopics} from "@/api/home";
 
 export default {
     name: "Topics",
     setup() {
         const selectedKeys = inject('selectedKeys');
-        let topics = ref([]);
-        function getTopics() {
-            topics.value = topics_all.value.filter(entry => entry.category === selectedKeys.value[0]);
+        const topics = ref([]);
+        const selectedTopic = ref([]);
+        function selectTopics() {
+            selectedTopic.value = topics.value.filter(entry => entry.category === selectedKeys.value[0]);
         }
-        getTopics();
         watch(selectedKeys, (newKey) => {
-            getTopics();
+            selectTopics();
         });
         function onEntryClicked(topic) {
             let new_page = router.resolve({
@@ -46,6 +46,10 @@ export default {
             window.open(new_page.href, '_blank');
         }
 
+        onMounted(async () => {
+            topics.value = await fetchTopics();
+            selectTopics();
+        })
 
         return {
             topics,
