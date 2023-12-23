@@ -24,10 +24,11 @@ import EntryContent from "@/views/Entry/components/EntryContent.vue";
 import Anchor from "@/views/Entry/components/Anchor.vue";
 import Relations from "@/views/Entry/components/Relations.vue";
 import Buttons from "@/views/Entry/components/Buttons.vue";
+import {CheckCircleOutlined} from "@ant-design/icons-vue";
 
 export default {
     name: "EntryView",
-    components: {Buttons, Relations, EntryContent, Anchor},
+    components: {Buttons, Relations, EntryContent, Anchor, CheckCircleOutlined},
     setup() {
 
         const contentLoaded = ref(false); // 新增状态

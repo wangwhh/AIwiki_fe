@@ -1,11 +1,6 @@
 <template>
     <a-layout>
         <a-layout-content class="edit-content">
-            <a-float-button shape="square" description="提交" style="left: 30px; padding:3px">
-                <template #icon>
-                    <CheckCircleOutlined/>
-                </template>
-            </a-float-button>
             <router-view/>
         </a-layout-content>
     </a-layout>

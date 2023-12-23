@@ -1,6 +1,6 @@
 <!--词条内容-->
 <template>
-    <v-md-preview :text="content_text" class="vuepress-markdown-body"></v-md-preview>
+    <v-md-preview :text="entry.text" class="vuepress-markdown-body"></v-md-preview>
 </template>
 
 <script>
@@ -8,25 +8,22 @@ import router from "@/router";
 import {onMounted, ref} from "vue";
 import axios from "axios";
 import {fetchEntry} from "@/api/entry";
+import {CheckCircleOutlined} from "@ant-design/icons-vue";
+import {postEdit} from "@/api/contribute";
 export default {
     name: "EntryContent",
+    components: {CheckCircleOutlined},
     setup(props, { emit }) {
-        const content_text = ref("");
+        const entry = ref({})
         const id = router.currentRoute.value.query.id;
-        // axios.get(`../../../docs/${id}.md`).then(res => {
-        //     content_text.value = res.data;
-        //     emit('content-loaded'); // 发射事件
-        // })
         onMounted(async () => {
-            const entry = await fetchEntry(id);
-            console.log(entry);
-            content_text.value = entry.text;
+            entry.value = await fetchEntry(id);
             emit('content-loaded'); // 发射事件
-
-            document.title = 'AIWiki - ' + entry.title;
+            document.title = 'AIWiki - ' + entry.value.title;
         });
+
         return {
-            content_text,
+            entry
         }
     }
 }
