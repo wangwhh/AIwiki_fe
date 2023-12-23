@@ -31,6 +31,7 @@ export default {
 
         onMounted(async () => {
             good_entries.value = await fetchGoodEntry();
+            console.log(good_entries.value)
         })
 
         return {

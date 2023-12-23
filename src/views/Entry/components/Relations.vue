@@ -12,17 +12,14 @@
 
 <script>
 
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import topics_all from "@/assets/topics_all";
 import router from "@/router";
+import {fetchRelation} from "@/api/entry";
 export default {
     name: "Relations",
     setup() {
-      const relate_entries_id = ref([5, 6, 7, 8, 9]);
       let relate_entries = ref([]);
-      relate_entries_id.value.forEach((id) => {
-          relate_entries.value.push(topics_all.value[id - 1]);
-      });
       function onEntryClicked(entry) {
           let new_page = router.resolve({
               path:'/entry/' ,
@@ -32,6 +29,13 @@ export default {
           });
           window.open(new_page.href, '_blank');
       }
+
+      onMounted(async () => {
+          const id = router.currentRoute.value.query.id;
+          relate_entries.value = await fetchRelation(id);
+
+      });
+
       return {
         relate_entries,
         onEntryClicked

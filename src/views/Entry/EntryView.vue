@@ -23,24 +23,14 @@ import {onMounted, provide, ref, watchEffect} from "vue";
 import EntryContent from "@/views/Entry/components/EntryContent.vue";
 import Anchor from "@/views/Entry/components/Anchor.vue";
 import Relations from "@/views/Entry/components/Relations.vue";
-import topics_all from "@/assets/topics_all";
 import Buttons from "@/views/Entry/components/Buttons.vue";
 
 export default {
     name: "EntryView",
     components: {Buttons, Relations, EntryContent, Anchor},
     setup() {
-        //let entry_id = ref(router.currentRoute.value.query.id);
-        const entryData = ref(null);
+
         const contentLoaded = ref(false); // 新增状态
-        onMounted(async () => {
-            const entryId = router.currentRoute.value.query.id;
-            if (entryId) {
-                // entryData.value = await fetchEntryData(entryId);
-                entryData.value = topics_all.value[entryId - 1];
-                document.title = 'AIWiki - ' + entryData.value.title;
-            }
-        });
         const setContentLoaded = () => {
             contentLoaded.value = true;
         };

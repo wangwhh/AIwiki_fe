@@ -2,7 +2,7 @@ import axios from "axios";
 import { ref } from "vue";
 
 const api = ref(axios.create({
-    baseURL: 'http://localhost',
+    baseURL: 'http://10.192.90.175:8081',
     //timeout: 1000,
 }));
 

@@ -1,6 +1,6 @@
 <!--Topics.vue-->
 <template>
-    <a-card v-for="topic in topics" class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
+    <a-card v-for="topic in selectedTopic" class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
         <a-flex justify="space-between">
             <img
                 alt="avatar"
@@ -8,11 +8,15 @@
                 class="imgStyle"
             />
             <a-flex vertical align="flex-end" justify="space-between" :style="{ padding: '32px' }">
-                <a-typography>
-                    <a-typography-title :level="3">
+                <a-typography style="display: contents">
+                    <a-typography-title :level="2">
                         {{topic.title}}
                     </a-typography-title>
+                    <a-typography-title :level="4">
+                        {{topic.description}}
+                    </a-typography-title>
                 </a-typography>
+
                 <a-button type="primary" @click="onEntryClicked(topic)" target="_blank">了解更多</a-button>
             </a-flex>
         </a-flex>
@@ -35,6 +39,7 @@ export default {
         }
         watch(selectedKeys, (newKey) => {
             selectTopics();
+            console.log(selectedTopic.value)
         });
         function onEntryClicked(topic) {
             let new_page = router.resolve({
@@ -52,7 +57,7 @@ export default {
         })
 
         return {
-            topics,
+            selectedTopic,
             onEntryClicked
         };
     }

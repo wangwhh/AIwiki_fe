@@ -4,7 +4,7 @@ export async function fetchTopics() {
     try {
         const res = await api.get("/topics");
         if(res.data.code === 20000){
-            return res.data.data;
+            return res.data.data.topics;
         } else {
             return [];
         }
@@ -17,8 +17,9 @@ export async function fetchTopics() {
 export async function fetchRecTools() {
     try {
         const res = await api.get("/recommendTool");
+        console.log(res.data.data)
         if(res.data.code === 20000){
-            return res.data.data;
+            return res.data.data.tools;
         } else {
             return [];
         }
@@ -33,7 +34,7 @@ export async function fetchGoodEntry() {
     try {
         const res = await api.get("/goodEntry");
         if(res.data.code === 20000){
-            return res.data.data;
+            return res.data.data.goodEntries;
         } else {
             return [];
         }

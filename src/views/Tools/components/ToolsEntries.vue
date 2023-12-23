@@ -26,87 +26,14 @@
 </template>
 
 <script>
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import router from "@/router";
+import {fetchTools} from "@/api/tools";
 
 export default {
     name: "ToolsEntries",
     setup() {
-        let ToolsEntries = ref([{
-            type: '热门工具',
-            tools: [{
-                img_src: "src/assets/pics/toolPics/chatgpt.png",
-                id: 1,
-                title: "ChatGPT",
-                href: 'https://chat.openai.com/'
-            }, {
-                img_src: "src/assets/pics/toolPics/stability-ai-icon.png",
-                id: 2,
-                title: "Stable Diffusion XL",
-                href: 'https://clipdrop.co/stable-diffusion'
-            }, {
-                img_src: "src/assets/pics/toolPics/github-copilot-icon.png",
-                id: 7,
-                title: "GitHub Copilot",
-                href: 'https://copilot.github.com/'
-            }]
-        }, {
-            type: 'AI聊天工具',
-            tools: [{
-                img_src: "src/assets/pics/toolPics/chatgpt.png",
-                id: 1,
-                title: "ChatGPT",
-                href: 'https://chat.openai.com/'
-            }, {
-                img_src: "src/assets/pics/toolPics/baidu-yiyan-icon.png",
-                id: 3,
-                title: "文心一言",
-                href: 'https://yiyan.baidu.com/'
-            }]
-        }, {
-            type: 'AI图像工具',
-            tools: [{
-                img_src: "src/assets/pics/toolPics/stability-ai-icon.png",
-                id: 2,
-                title: "Stable Diffusion XL",
-                href: 'https://clipdrop.co/stable-diffusion'
-            }, {
-                img_src: "src/assets/pics/toolPics/new-bing-icon.png",
-                id: 5,
-                title: "Bing Image Creator",
-                href: 'https://cn.bing.com/images/create'
-            }]
-        }, {
-            type: 'AI编程工具',
-            tools: [{
-                img_src: "src/assets/pics/toolPics/github-copilot-icon.png",
-                id: 7,
-                title: "GitHub Copilot",
-                href: 'https://copilot.github.com/'
-            }]
-        }, {
-            type: 'AI文本工具',
-            tools: [{
-                img_src: "src/assets/pics/toolPics/notion-ai-icon.png",
-                id: 4,
-                title: "Notion AI",
-                href: 'https://www.notion.so/Notion-AI'
-            }]
-        }, {
-            type: 'AI视频工具',
-            tools: [{
-                img_src: "src/assets/pics/toolPics/aigc-yizhentv-icon.png",
-                id: 4,
-                title: "一秒创帧",
-                href: 'https://www.notion.so/Notion-AI'
-            }]
-        }, {
-            type: 'AI音频工具',
-            tools: []
-        }, {
-            type: 'AI其他工具',
-            tools: []
-        }]);
+        let ToolsEntries = ref([]);
 
 
         function onEntryClicked(kit) {
@@ -121,6 +48,21 @@ export default {
             window.open(kit.href, '_blank');
         }
 
+        onMounted(async () => {
+            const tools = await fetchTools();
+            console.log(tools)
+            const groups = {};
+            tools.forEach(entry => {
+                let category = entry.category;
+                if (!groups[category]) {
+                    groups[category] = [];
+                }
+                groups[category].push(entry);
+            });
+            ToolsEntries.value = groups;
+
+            console.log(ToolsEntries.value)
+        });
 
         return {
             ToolsEntries,

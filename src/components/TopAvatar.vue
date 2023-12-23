@@ -29,17 +29,16 @@
              width="450px"
     >
         <div v-if="state === '登录账号'" class="login-modal">
-            <a-input v-model="loginForm.name" placeholder="用户名" style="width: 80%; margin-top: 7%; margin-bottom: 8%">
+            <a-input v-model:value=loginForm.username placeholder="用户名" style="width: 80%; margin-top: 7%; margin-bottom: 8%">
                 <template #prefix>
                     <UserOutlined />
                 </template>
             </a-input>
-            <a-input-password v-model="loginForm.pwd" placeholder="请输入密码" style="width: 80%; margin-bottom: 8%">
+            <a-input-password v-model:value=loginForm.password placeholder="请输入密码" style="width: 80%; margin-bottom: 8%">
                 <template #prefix>
                     <LockOutlined />
                 </template>
             </a-input-password>
-            <a-checkbox style="width: 80%; margin-bottom: 8%"> 记住密码 </a-checkbox>
             <a-button type="primary" style="width: 80%; margin-bottom: 5%" @click="handleLogin">登录</a-button>
             <a-button type="text" style="width: 80%; margin-bottom: 5%" @click="state='注册账号'">还没有账号？注册账号</a-button>
         </div>
@@ -76,6 +75,8 @@
 import {AntDesignOutlined, UserOutlined, LockOutlined, MailOutlined} from "@ant-design/icons-vue";
 import {inject, ref} from "vue";
 import isLogin from "@/store/isLogin";
+import {login} from "@/api/user";
+import { notification } from 'ant-design-vue';
 export default {
     name: "TopAvatar",
     computed: {
@@ -88,8 +89,8 @@ export default {
         const modalOpen=ref(false);
         const state= ref('登录账号');
         const loginForm= ref({
-            name: '',
-            pwd: '',
+            username: '',
+            password: '',
         });
         const registerForm= ref({
             email: '',
@@ -118,12 +119,17 @@ export default {
             state.value = '注册账号';
         }
 
-        function handleLogin() {
-            console.log("login");
+        async function handleLogin() {
             console.log(loginForm.value)
-            //api.login(loginForm.value)
-            isLogin.value = true;
-            modalOpen.value = false;
+            const res = await login(loginForm.value);
+            if(res.code !== 20000) {
+                openNotification('error', '登录失败', res.msg)
+            } else{
+                openNotification('success', '登录成功', "欢迎回来")
+               sessionStorage.setItem('token', res.data.data.token)
+                isLogin.value = true;
+                modalOpen.value = false;
+            }
         }
         function handleRegister() {
             console.log("register");
@@ -175,6 +181,14 @@ export default {
             isLogin.value = false;
             // TODO: 清 session
         }
+
+        const openNotification = (type, title, msg) => {
+            notification[type]({
+                message: title,
+                description: msg,
+            });
+        };
+
         return {
             handleLogin,
             handleRegister,

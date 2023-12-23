@@ -5,17 +5,26 @@
 
 <script>
 import router from "@/router";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import axios from "axios";
+import {fetchEntry} from "@/api/entry";
 export default {
     name: "EntryContent",
     setup(props, { emit }) {
         const content_text = ref("");
         const id = router.currentRoute.value.query.id;
-        axios.get(`../../../docs/${id}.md`).then(res => {
-            content_text.value = res.data;
+        // axios.get(`../../../docs/${id}.md`).then(res => {
+        //     content_text.value = res.data;
+        //     emit('content-loaded'); // 发射事件
+        // })
+        onMounted(async () => {
+            const entry = await fetchEntry(id);
+            console.log(entry);
+            content_text.value = entry.text;
             emit('content-loaded'); // 发射事件
-        })
+
+            document.title = 'AIWiki - ' + entry.title;
+        });
         return {
             content_text,
         }

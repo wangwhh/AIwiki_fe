@@ -17,15 +17,19 @@
 </template>
 
 <script>
-import {computed, ref} from "vue";
-import entries_all from "@/assets/entries_all.js";
+import {onMounted, ref} from "vue";
+import {fetchEntries} from "@/api";
 export default {
     name: "DictView",
     setup() {
         // 将 entries_all 按首字母分类
-        const groupedEntries = computed(() => {
+        const groupedEntries = ref({});
+
+        onMounted(async () => {
+            const entries = await fetchEntries();
+
             const groups = {};
-            entries_all.value.forEach(entry => {
+            entries.forEach(entry => {
                 let letter = entry.title[0]; // 获取首字母并转为大写
                 if(letter >= 'a' && letter <= 'z') letter = letter.toUpperCase();
                 if (!groups[letter]) {
@@ -33,7 +37,8 @@ export default {
                 }
                 groups[letter].push(entry);
             });
-            return groups;
+            groupedEntries.value = groups;
+            console.log(groupedEntries.value)
         });
 
         return {

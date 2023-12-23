@@ -17,24 +17,14 @@
 </template>
 
 <script>
-import {computed, ref} from "vue";
-import entries_all from "@/assets/entries_all.js";
+import {onMounted, ref} from "vue";
 import router from "@/router";
+import {fetchEntries} from "@/api";
+
 export default {
     name: "ClassView",
     setup() {
-        // 将 entries_all 按首字母分类
-        const groupedEntries = computed(() => {
-            const groups = {};
-            entries_all.value.forEach(entry => {
-                let category = entry.category; // 获取首字母并转为大写
-                if (!groups[category]) {
-                    groups[category] = [];
-                }
-                groups[category].push(entry);
-            });
-            return groups;
-        });
+        const groupedEntries = ref({});
         function onEntryClicked(entry) {
             let new_page = router.resolve({
                 path:'/entry/' ,
@@ -44,6 +34,21 @@ export default {
             });
             window.open(new_page.href, '_blank');
         }
+
+        onMounted(async () => {
+            const entries = await fetchEntries();
+
+            const groups = {};
+            entries.forEach(entry => {
+                let category = entry.category; // 获取首字母并转为大写
+                if (!groups[category]) {
+                    groups[category] = [];
+                }
+                groups[category].push(entry);
+            });
+            groupedEntries.value = groups;
+        });
+
         return {
             groupedEntries,
             onEntryClicked
