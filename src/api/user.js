@@ -14,3 +14,18 @@ export async function login(loginForm) {
     }
 }
 
+export async function register(loginForm) {
+    try {
+        console.log("loginForm ",loginForm)
+        const res = await api.post("/user/register", {
+            username: loginForm.name,
+            password: loginForm.pwd,
+            email: loginForm.email
+        });
+        return res.data;
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+}
+
