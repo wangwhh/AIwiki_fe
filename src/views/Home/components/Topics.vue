@@ -4,7 +4,7 @@
         <a-flex justify="space-between">
             <img
                 alt="avatar"
-                :src=topic.img_src
+                :src=topic.image
                 class="imgStyle"
             />
             <a-flex vertical align="flex-end" justify="space-between" :style="{ padding: '32px' }">
@@ -53,6 +53,7 @@ export default {
 
         onMounted(async () => {
             topics.value = await fetchTopics();
+            console.log("topics.value ", topics.value);
             selectTopics();
         })
 

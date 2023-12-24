@@ -4,6 +4,7 @@ export async function fetchTopics() {
     try {
         const res = await api.get("/topics");
         if(res.data.code === 20000){
+            console.log("res ", res);
             return res.data.data.topics;
         } else {
             return [];
