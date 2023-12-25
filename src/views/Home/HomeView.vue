@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import TopBar from "@/components/TopBar.vue";
 import HomeMenu from "@/views/Home/components/HomeMenu.vue";
 import GoodEntry from "@/views/Home/components/GoodEntry.vue";
 import RecTools from "@/views/Home/components/RecTools.vue";
@@ -29,7 +28,7 @@ import Topics from "@/views/Home/components/Topics.vue";
 
 export default {
     name: "HomeView",
-    components: {Topics, RecTools, GoodEntry, TopBar, HomeMenu},
+    components: {Topics, RecTools, GoodEntry, HomeMenu},
 
     setup() {
         let selectedKeys = ref(['home']);

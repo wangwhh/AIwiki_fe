@@ -29,3 +29,13 @@ export async function register(loginForm) {
     }
 }
 
+export async function logout() {
+    try {
+        const res = await api.post("/user/logout");
+        return res.data;
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+}
+

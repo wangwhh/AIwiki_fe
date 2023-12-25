@@ -11,6 +11,7 @@ import UserView from "@/views/User/UserView.vue";
 import UserInfo from "@/views/User/index/UserInfo.vue";
 import EditContent from "@/views/Contribute/components/EditContent.vue";
 import AddContent from "@/views/Contribute/components/AddContent.vue";
+import SearchView from "@/views/Search/SearchView.vue";
 
 const routes = [
     {
@@ -106,16 +107,13 @@ const routes = [
                     title: '用户信息',
                 },
             },
-            // 看情况实现？
-            // {
-            //     path: '',
-            //     name: '',
-            //     component: ,
-            //     meta: {
-            //         title: '贡献记录',
-            //     },
-            // }
         ]
+    },
+    {
+        path: '/search',
+        name: 'search',
+        component: SearchView,
+        props: true,
     },
 ]
 const router = new createRouter({

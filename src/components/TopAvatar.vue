@@ -75,8 +75,10 @@
 import { AntDesignOutlined, UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons-vue";
 import { inject, ref } from "vue";
 import isLogin from "@/store/isLogin";
-import { login, register } from "@/api/user";
+import {login, logout, register} from "@/api/user";
 import { notification } from 'ant-design-vue';
+import api from "@/api/api";
+
 export default {
     name: "TopAvatar",
     computed: {
@@ -137,6 +139,7 @@ export default {
                 console.log("sessionStorage ",sessionStorage.getItem("uid"))
                 isLogin.value = true;
                 modalOpen.value = false;
+                api.defaults.headers.common['Authorization'] = res.data.token;
             }
         }
         async function handleRegister() {
@@ -192,15 +195,21 @@ export default {
             
         }
         function userSpace() {
-            console.log("userSpace");
+            // router.push('/user')
 
         }
-        function handleLogout() {
+        async function handleLogout() {
             console.log("logout");
             isLogin.value = false;
-            // TODO: 清 session
-            sessionStorage.removeItem("token");
-            sessionStorage.removeItem("uid");
+            const res = await logout();
+            if(res.code === 20000) {
+                openNotification('success', '退出成功', "期待您的下次使用");
+                sessionStorage.removeItem("token");
+                sessionStorage.removeItem("uid");
+                api.defaults.headers.common['Authorization'] = '';
+            } else {
+                openNotification('error', '退出失败', "请稍后再试");
+            }
         }
 
         const openNotification = (type, title, msg) => {

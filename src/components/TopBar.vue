@@ -33,7 +33,7 @@
     </a-menu>
     <a-flex gap="large" align="center" horizotal class="head-right-bar">
         <a-input-search
-                v-model:value="value"
+                v-model:value="search_key"
                 placeholder="请输入关键词"
                 enter-button
                 @search="onSearch"
@@ -48,20 +48,28 @@
 import {AntDesignOutlined} from "@ant-design/icons-vue";
 import {inject, ref} from "vue";
 import TopAvatar from "@/components/TopAvatar.vue";
-const value = ref('');
+import router from "@/router";
 const selectedKeys1 = ref(['1']);
 
 export default {
     name: "TopBar",
     components: {TopAvatar, AntDesignOutlined},
     setup() {
+
+        const search_key = ref('');
         function onSearch(value) {
-            console.log(value);
+            let new_page = router.resolve({
+                path:'/search' ,
+                query: {
+                    query: value
+                }
+            });
+            window.open(new_page.href, '_blank');
         }
         return {
             selectedKeys1,
-            value,
-            onSearch
+            onSearch,
+            search_key
         };
     },
 }

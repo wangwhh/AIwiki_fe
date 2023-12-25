@@ -1,24 +1,13 @@
 <!--UserView.vue-->
 <template>
     <a-layout>
-        
-        
-            <a-layout-content class="home-content">
-                <UserInfo/>
-
-            </a-layout-content>
-            <a-layout-sider class="right-bar">
-                <a-flex gap="middle" vertical>
-                    
-                </a-flex>
-            </a-layout-sider>
-        
-
+        <a-layout-content class="home-content">
+            <UserInfo/>
+        </a-layout-content>
     </a-layout>
 </template>
 
 <script>
-import TopBar from "@/components/TopBar.vue";
 import UserMenu from "@/views/User/components/UserMenu.vue";
 import {provide, ref} from "vue";
 import UserInfo from "@/views/User/index/UserInfo.vue";
@@ -26,7 +15,7 @@ import UserInfo from "@/views/User/index/UserInfo.vue";
 
 export default {
     name: "HomeView",
-    components: {TopBar, UserInfo},
+    components: {UserInfo},
 
     setup() {
         let selectedKeys = ref(['home']);
