@@ -23,7 +23,7 @@
         </a-avatar>
     </a-popover>
 
-    <a-modal v-model:open="modalOpen" :title="state" :footer="null" centered width="450px">
+    <a-modal v-model:open="loginModalOpen" @cancel="closeModal" :title="state" :footer="null" centered width="450px">
         <div v-if="state === '登录账号'" class="login-modal">
             <a-input v-model:value=loginForm.username placeholder="用户名"
                 style="width: 80%; margin-top: 7%; margin-bottom: 8%">
@@ -66,7 +66,6 @@
             </a-input-password>
             <a-button type="primary" style="width: 80%; margin-bottom: 5%" @click="handleRegister">注册</a-button>
             <a-button type="text" style="width: 80%; margin-bottom: 5%" @click="state = '登录账号'">返回登录</a-button>
-            <!-- <a-alert v-if="this.alerts.flag" type="error" style="width: 80%; margin: auto">{{ alerts.message }}</a-alert> -->
         </div>
     </a-modal>
 </template>
@@ -78,22 +77,21 @@ import isLogin from "@/store/isLogin";
 import {login, logout, register} from "@/api/user";
 import { notification } from 'ant-design-vue';
 import api from "@/api/api";
+import loginModalOpen from "@/store/loginModalOpen";
+import router from "@/router";
 
 export default {
     name: "TopAvatar",
     computed: {
+        loginModalOpen() {
+            return loginModalOpen.value
+        },
         isLogin() {
             return isLogin.value;
         }
     },
     components: { AntDesignOutlined, UserOutlined, LockOutlined, MailOutlined },
-    data(){
-        return {
-
-        }
-    },
     setup() {
-        const modalOpen = ref(false);
         const state = ref('登录账号');
         const loginForm = ref({
             username: '',
@@ -116,14 +114,18 @@ export default {
         });
         function onLoginClicked() {
             // console.log("login");
-            modalOpen.value = true;
+            loginModalOpen.value = true;
             state.value = '登录账号';
         }
 
         function onRegisterClicked() {
             console.log("register");
-            modalOpen.value = true;
+            loginModalOpen.value = true;
             state.value = '注册账号';
+        }
+
+        function closeModal() {
+            loginModalOpen.value = false;
         }
 
         async function handleLogin() {
@@ -138,7 +140,7 @@ export default {
                 sessionStorage.setItem('uid', res.data.uid)
                 console.log("sessionStorage ",sessionStorage.getItem("uid"))
                 isLogin.value = true;
-                modalOpen.value = false;
+                loginModalOpen.value = false;
                 api.defaults.headers.common['Authorization'] = res.data.token;
             }
         }
@@ -195,8 +197,8 @@ export default {
             
         }
         function userSpace() {
-            // router.push('/user')
-
+            console.log("userSpace")
+            router.push('/user/info')
         }
         async function handleLogout() {
             console.log("logout");
@@ -226,7 +228,8 @@ export default {
             handleLogout,
             onLoginClicked,
             onRegisterClicked,
-            state, loginForm, registerForm, errorStatus, alerts, modalOpen
+            closeModal,
+            state, loginForm, registerForm, errorStatus, alerts
         }
     }
 }

@@ -1,8 +1,11 @@
 <!--UserView.vue-->
 <template>
     <a-layout>
-        <a-layout-content class="home-content">
-            <UserInfo/>
+        <a-layout-sider class="sider-menu">
+            <UserMenu/>
+        </a-layout-sider>
+        <a-layout-content class="user-content">
+            <router-view/>
         </a-layout-content>
     </a-layout>
 </template>
@@ -15,7 +18,7 @@ import UserInfo from "@/views/User/index/UserInfo.vue";
 
 export default {
     name: "HomeView",
-    components: {UserInfo},
+    components: {UserInfo, UserMenu},
 
     setup() {
         let selectedKeys = ref(['home']);
@@ -36,17 +39,14 @@ export default {
     margin: 100px 0 10px 20px;
     border-radius: 10px;
     background-color: white;
-    position: fixed;
 }
 
-.home-content {
-    /*background: #fff;*/
-    /*margin-top: 72px;*/
-    
-    overflow: initial ;
-    /*border-radius: 10px;*/
+.user-content {
+    background-color: white;
+    margin-top: 72px;
+    border-radius: 10px;
     text-align: center;
-    /*padding: 24px;*/
+    padding: 24px;
 }
 
 .right-bar {

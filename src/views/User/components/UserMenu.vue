@@ -9,12 +9,12 @@
             mode="inline"
             :style="{ height: '100%', borderRadius: '10px' }"
     >
-        <a-menu-item key="user">
-            用户界面
-        </a-menu-item>
-        <a-menu-item key="1">
-            个人信息
-        </a-menu-item>
+        <router-link to="/">
+            <a-menu-item>
+                个人信息
+            </a-menu-item>
+        </router-link>
+
         <a-menu-item key="2">
             个性选择
         </a-menu-item>

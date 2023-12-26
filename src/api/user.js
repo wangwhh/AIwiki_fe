@@ -14,13 +14,13 @@ export async function login(loginForm) {
     }
 }
 
-export async function register(loginForm) {
+export async function register(registerForm) {
     try {
-        console.log("loginForm ",loginForm)
+        // console.log("registerForm ",registerForm)
         const res = await api.post("/user/register", {
-            username: loginForm.name,
-            password: loginForm.pwd,
-            email: loginForm.email
+            username: registerForm.name,
+            password: registerForm.pwd,
+            email: registerForm.email
         });
         return res.data;
     } catch (err) {
@@ -39,3 +39,26 @@ export async function logout() {
     }
 }
 
+export async function fetchUserInfo() {
+    try {
+        const res = await api.get("/user/getInfo");
+        if(res.data.code === 20000) {
+            return res.data.data;
+        } else {
+            return null;
+        }
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+}
+
+export async function modifyUserInfo(data) {
+    try {
+        const res = await api.post("/user/modifyInfo", data);
+        return res.data;
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+}
