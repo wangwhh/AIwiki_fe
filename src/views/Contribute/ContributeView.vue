@@ -10,13 +10,20 @@
 
 import EditContent from "@/views/Contribute/components/EditContent.vue";
 import {CheckCircleOutlined} from "@ant-design/icons-vue";
+import isLogin from "@/store/isLogin";
+import router from "@/router";
+import openNotification from "@/components/notification";
+import loginModalOpen from "@/store/loginModalOpen";
 
 export default {
     name: "ContributeView",
     components: {EditContent, CheckCircleOutlined},
 
     setup() {
-
+        if(!isLogin.value) {
+            openNotification('warning', '请先登录');
+            loginModalOpen.value = true;
+        }
     },
 
 }

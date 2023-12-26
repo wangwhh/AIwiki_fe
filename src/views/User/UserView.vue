@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .sider-menu {
-    height: 100%;
+    height: calc(100vh - 120px);
     width: 230px !important;
     max-width: 300px !important;
     margin: 100px 0 10px 20px;
@@ -43,7 +43,7 @@ export default {
 
 .user-content {
     background-color: white;
-    margin-top: 72px;
+    margin: 100px 20px 10px 20px;
     border-radius: 10px;
     text-align: center;
     padding: 24px;

@@ -9,15 +9,11 @@
             mode="inline"
             :style="{ height: '100%', borderRadius: '10px' }"
     >
-        <router-link to="/">
+        <router-link to="/user/info">
             <a-menu-item>
                 个人信息
             </a-menu-item>
         </router-link>
-
-        <a-menu-item key="2">
-            个性选择
-        </a-menu-item>
         <a-menu-item key="3">
             贡献记录
         </a-menu-item>

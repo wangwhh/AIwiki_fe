@@ -6,7 +6,7 @@
         </template>
         <a-avatar :size="58">
             <template #icon>
-                <AntDesignOutlined />
+                <UserOutlined />
             </template>
         </a-avatar>
     </a-popover>
@@ -16,9 +16,9 @@
             <p><a-button type="text" @click="userSpace">个人中心</a-button></p>
             <a-button type="text" @click="handleLogout">退出登录</a-button>
         </template>
-        <a-avatar :size="58">
+        <a-avatar :size="58" style="background-color: #5ea5f5">
             <template #icon>
-                <AntDesignOutlined />
+                <UserOutlined />
             </template>
         </a-avatar>
     </a-popover>
