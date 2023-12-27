@@ -209,6 +209,7 @@ export default {
                 sessionStorage.removeItem("token");
                 sessionStorage.removeItem("uid");
                 api.defaults.headers.common['Authorization'] = '';
+                router.push('/home');
             } else {
                 openNotification('error', '退出失败', "请稍后再试");
             }

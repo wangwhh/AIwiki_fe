@@ -8,7 +8,7 @@
 
 <script>
 
-import EditContent from "@/views/Contribute/components/EditContent.vue";
+import EditContent from "@/views/Contribute/index/EditContent.vue";
 import {CheckCircleOutlined} from "@ant-design/icons-vue";
 import isLogin from "@/store/isLogin";
 import router from "@/router";

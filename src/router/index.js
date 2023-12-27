@@ -9,8 +9,8 @@ import ContributeView from "@/views/Contribute/ContributeView.vue";
 import IndexView from "@/views/Index/IndexView.vue";
 import UserView from "@/views/User/UserView.vue";
 import UserInfo from "@/views/User/index/UserInfo.vue";
-import EditContent from "@/views/Contribute/components/EditContent.vue";
-import AddContent from "@/views/Contribute/components/AddContent.vue";
+import EditContent from "@/views/Contribute/index/EditContent.vue";
+import AddContent from "@/views/Contribute/index/AddContent.vue";
 import SearchView from "@/views/Search/SearchView.vue";
 
 const routes = [
