@@ -31,7 +31,7 @@ export default {
             pwd: '',
         });
         function handleLogin() {
-            api.post('/user/login', {
+            api.post('/adminLogin', {
                 username: loginForm.value.name,
                 password: loginForm.value.pwd,
             }).then(res => {

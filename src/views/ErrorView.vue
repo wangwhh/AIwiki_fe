@@ -54,7 +54,7 @@ import {onMounted, ref} from "vue";
 import {EyeOutlined, CheckOutlined, CloseOutlined} from "@ant-design/icons-vue";
 
 export default {
-    name: "ContribView",
+    name: "ErrorView",
     components:{EyeOutlined, CheckOutlined, CloseOutlined},
     setup() {
         const edit_visible = ref(false);
@@ -138,9 +138,9 @@ export default {
         }
 
         async function fetchRecord() {
-            await api.get('/queryEntrySubmission').then((res) => {
+            await api.get('/queryErrorCorrection').then((res) => {
                 if (res.data.code === 20000) {
-                    data.value = res.data.data.entrySubmissions;
+                    data.value = res.data.data.errorCorrections;
                 } else {
                     openNotification('error','获取专题信息失败', '请稍后再试')
                 }
@@ -152,7 +152,7 @@ export default {
         }
 
         async function passContrib(record) {
-            await api.post('/reviewEntrySubmission', {
+            await api.post('/reviewErrorCorrection', {
                 "ecid": record.ecid,
                 "status": "通过",
                 "comment": ""

@@ -85,7 +85,7 @@
                 </a-select>
             </a-form-item>
             <a-form-item>
-                <a-button type="primary" @click="textOpen.value = true; text.value = '';">编辑内容</a-button>
+                <a-button type="primary" @click="onEditText">编辑内容</a-button>
             </a-form-item>
         </a-form>
     </a-modal>
@@ -94,7 +94,7 @@
         <v-md-editor v-model="text" height="600px"></v-md-editor>
     </a-modal>
     <a-modal v-model:open="previewOpen" width="1000px" title="预览词条" @ok="textOpen = false" :footer="null">
-        <v-md-preview :text="previewText"  style="height:600px"></v-md-preview>
+        <v-md-preview :text="previewText.slice(0, 450) + '...'"  style="height:600px "></v-md-preview>
     </a-modal>
 
 </template>
