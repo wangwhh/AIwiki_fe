@@ -11,9 +11,9 @@
             常用AI工具
           </span>
             </template>
-            <a-menu-item key="1">AI写作工具</a-menu-item>
-            <a-menu-item key="2">AI图片工具</a-menu-item>
-            <a-menu-item key="3">AI视频工具</a-menu-item>
+            <a-menu-item key="AI聊天工具">AI聊天工具</a-menu-item>
+            <a-menu-item key="AI绘画工具">AI绘画工具</a-menu-item>
+            <a-menu-item key="AI视频工具">AI视频工具</a-menu-item>
             
         </a-sub-menu>
         <a-sub-menu key="sub2">
@@ -22,8 +22,8 @@
             AI对话问答
           </span>
             </template>
-            <a-menu-item key="4">AI对话聊天</a-menu-item>
-            <a-menu-item key="5">AI语言翻译</a-menu-item>
+            <a-menu-item key="AI聊天工具">AI聊天工具</a-menu-item>
+            <a-menu-item key="AI语言翻译">AI语言翻译</a-menu-item>
                     </a-sub-menu>
         <a-sub-menu key="sub3">
             <template #title>
@@ -37,15 +37,15 @@
     </a-menu>
 </template>
 <script>
-  import { ref } from 'vue';
-  const selectedKeys2 = ref(['1']);
-  const openKeys = ref(['sub1']);
+import {inject, ref} from 'vue';
   export default {
     name: 'Menu',
     setup() {
+      let selectedKeys2 = inject('selectedKeys2');
+      console.log(selectedKeys2.value);
       return {
         selectedKeys2,
-        openKeys,
+        // openKeys,
       };
     },
   };

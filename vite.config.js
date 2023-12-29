@@ -16,7 +16,7 @@ export default defineConfig({
   	https: false,
     proxy: {
       '/image': { 
-        target: 'http://10.181.232.140:5952', // 目标地址 --> 服务器地址
+        target: 'http://localhost:5952', // 目标地址 --> 服务器地址
         changeOrigin: true, // 允许跨域
         ws: true,  // 允许websocket代理
       }

@@ -22,13 +22,22 @@
 import ToolsMenu from "@/views/Tools/components/ToolsMenu.vue";
 import RecTools from "@/views/Home/components/RecTools.vue";
 import ToolsEntries from "@/views/Tools/components/ToolsEntries.vue";
+import {provide, ref} from "vue";
 
 export default {
     name: "ToolsView",
     components: {ToolsEntries, RecTools, ToolsMenu},
 
     setup() {
-
+        let selectedKeys = ref(['home']);
+       
+       
+        let selectedKeys2 = ref(['AI聊天工具']);
+        let openKeys = ref(['sub1']);
+        provide('selectedKeys2', selectedKeys2); // 向子组件提供状态
+        return {
+            selectedKeys2,
+        };
     },
 
 }
