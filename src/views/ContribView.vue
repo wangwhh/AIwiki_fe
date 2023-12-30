@@ -153,14 +153,14 @@ export default {
 
         async function passContrib(record) {
             await api.post('/reviewEntrySubmission', {
-                "ecid": record.ecid,
+                "esid": record.esid,
                 "status": "通过",
                 "comment": ""
             }).then((res) => {
                 if (res.data.code === 20000) {
                     openNotification('success','审核成功', '请刷新页面')
                 } else {
-                    openNotification('error','审核失败', '请稍后再试')
+                    openNotification('error','审核失败', res.data.msg)
                 }
             }).catch((err) => {
                 console.log(err);
@@ -171,15 +171,15 @@ export default {
         }
 
         async function rejectContrib(record) {
-            await api.post('/reviewErrorCorrection', {
-                "ecid": record.ecid,
+            await api.post('/reviewEntrySubmission', {
+                "esid": record.esid,
                 "status": "驳回",
                 "comment": "审核不通过"
             }).then((res) => {
                 if (res.data.code === 20000) {
                     openNotification('success','审核成功', '请刷新页面')
                 } else {
-                    openNotification('error','审核失败', '请稍后再试')
+                    openNotification('error','审核失败', res.data.msg)
                 }
             }).catch((err) => {
                 console.log(err);
