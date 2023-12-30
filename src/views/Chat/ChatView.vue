@@ -5,8 +5,8 @@
           <h2 class="chat-title">Chat with Assistant</h2>    
         </div>    
         <div class="chat-messages">    
-          <div v-for="message in messages" :key="message.id" class="message" :class="{ 'user-message': !message.fromAI, 'ai-message': message.fromAI }">    
-            <div class="message-bubble">    
+          <div v-for="message in messages" :key="message.id" class="message" :class="{ 'user-message': message.role==='user', 'ai-message': message.role==='assistant'}">    
+            <div class="message-bubble">
               {{ message.content }}    
             </div>    
           </div>    
@@ -20,17 +20,15 @@
   </template>    
     
   <script>    
+
+  import axios from 'axios';
   export default {  
   name: "ChatView",  
   data() {  
     return {  
       messages: [  
-        { id: 1, content: "Hello! How can I help you today?", fromAI: true },
-        { id: 2, content: "I'm an artificial intelligence robot from ZJU.", fromAI: true },
-        { id: 3, content: "You can share something interesting with me.", fromAI: true },
-        { id: 4, content: "I am glad to hear you words.", fromAI: true },  
-        { id: 5, content: "So let us start the exciting and heuristic conversation.", fromAI: true },  
-        { id: 6, content: "Do you like winter?", fromAI: true },  
+        { role:"assistant", content: "您好！我是Wiki AI 大模型！"},
+        { role:"assistant", content: "请问我有什么能够帮助你的吗?"},
       ],  
       newMessage: ""  
     };  
@@ -50,28 +48,44 @@
     },  
     sendMessage() {  
       if (this.newMessage.trim() !== "") {  
-        this.messages.push({ id: this.messages.length + 1, content: this.newMessage, fromAI: false });  
-        this.simulateAIResponse(this.newMessage);  
+        this.ask(this.newMessage);
+        this.messages.push({ role: 'assistant', content: "您好！请稍等！我正在思考中..." });
         this.newMessage = "";  
         this.$nextTick(() => {  
           this.scrollToBottom();  
         });  
       }  
     },  
-    simulateAIResponse(userMessage) {  
-      setTimeout(() => {  
-        this.messages.push({ id: this.messages.length + 1, content: "I understand that you said - " + userMessage, fromAI: true });  
-        this.$nextTick(() => {  
-          this.scrollToBottom();  
-        });  
-      }, 500);  
-    },  
+    // simulateAIResponse(userMessage) {  
+    //   setTimeout(() => {  
+    //     this.messages.push({ id: this.messages.length + 1, content: "I understand that you said - " + userMessage, fromAI: true });  
+    //     this.$nextTick(() => {  
+    //       this.scrollToBottom();  
+    //     });  
+    //   }, 500);  
+    // },  
     updateBubbleWidth() {  
       const input = this.$refs.messageInput;  
       const bubble = input.nextElementSibling;  
       bubble.style.width = input.value.length * 8 + 'px';  
-    }  
-  }  
+    },
+    async ask(question) {
+        this.messages.push({ role: 'user', content: question });
+        const CHAT_URL = 'https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro';
+        const token = "24.e1d0ad464d7be3f81765d23e1c087fe9.2592000.1706507090.282335-46042205";
+        const res = await axios.post(
+            CHAT_URL,
+            { messages: this.messages.slice(2) },
+            { params: { 'access_token': token } },
+            { Headers: {'Content-Type': 'application/json'}}
+        ).then(res => {
+          this.messages.pop();
+          const { data } = res;
+          this.messages.push({ role: 'assistant', content: data.result });
+          return data;
+        });
+    }
+  }
 };   
 </script>    
     
@@ -138,13 +152,14 @@
     
   .chat-input {  
     display: flex;  
-    position:relative;
+    position: absolute;
+    width: 60%;
     align-items: center;  
     padding: 10px;  
     border-bottom-left-radius: 10px;  
     border-bottom-right-radius: 10px;  
     background-color: #fff;
-    bottom: 0vh;  
+    bottom: 32%; 
   }  
     
   .message-input {  
