@@ -9,7 +9,7 @@
         </a-layout-sider>
         <a-layout-content style="padding: 50px">
             <a-descriptions title="个人信息" :column="{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 1, xs: 1 }">
-                <a-descriptions-item label="用户名">{{user_info.name}}</a-descriptions-item>
+                <a-descriptions-item label="用户名">{{user_info.username}}</a-descriptions-item>
                 <a-descriptions-item label="邮箱">{{user_info.email}}</a-descriptions-item>
                 <a-descriptions-item label="电话号码">{{user_info.phone}}</a-descriptions-item>
                 <a-descriptions-item label="性别">{{user_info.gender}}</a-descriptions-item>
@@ -30,10 +30,10 @@
     <a-modal v-model:open="edit_form_visible" title="编辑个人信息" @cancel="handleCancel" @ok="handleBeforeOk">
         <a-form :model="edit_form">
             <a-form-item label="用户名">
-                <a-input v-model:value="edit_form.name" :error=errorStatus.name />
+                <a-input v-model:value="edit_form.username"/>
             </a-form-item>
             <a-form-item label="邮箱">
-                <a-input v-model:value="edit_form.email" :error=errorStatus.email />
+                <a-input v-model:value="edit_form.email" :error=emailError />
             </a-form-item>
             <a-form-item label="电话号码">
                 <a-input v-model:value="edit_form.phone" />
@@ -92,7 +92,7 @@ export default {
     components: {UserOutlined},
     setup() {
         const user_info = ref({
-            name: '',
+            username: '',
             email: '',
             phone: '',
             gender: '',
@@ -101,17 +101,9 @@ export default {
         });
         const edit_form_visible = ref(false);
         const edit_form = ref({
-            name: '',
-            email: '',
-            phone: '',
-            gender: '',
-            birth: '',
-            description: '',
+
         });
-        const errorStatus = ref({
-            email: false,
-            name: false,
-        });
+        const emailError= ref(false);
 
         const alerts = ref({
             flag: false,
@@ -132,30 +124,21 @@ export default {
             }
 
             if(validEmail(edit_form.value.email) === false) {
-                errorStatus.value.email = true;
+                emailError.value = true;
                 alerts.value.flag = true;
                 alerts.value.message = '邮箱格式错误';
                 return false;
             }else {
                 alerts.value.flag = false;
-                errorStatus.value.email = false;
-            }
-
-            if(edit_form.value.name.length <= 6) {
-                errorStatus.value.name = true;
-                alerts.value.flag = true;
-                alerts.value.message = '用户名长度不得小于6位';
-                return false;
-            }else{
-                alerts.value.flag = false;
-                errorStatus.value.name = false;
+                emailError.value = false;
             }
 
             modifyUserInfo(edit_form.value).then(res => {
                 if(res.code === 20000) {
                     openNotification('success', '修改成功', '个人信息已更新');
+                    edit_form_visible.value = false;
                 }else {
-                    openNotification('error', '修改失败', '请稍后再试');
+                    openNotification('error', '修改失败', res.msg);
                 }
             })
         }
@@ -165,7 +148,7 @@ export default {
             user_info.value = await fetchUserInfo();
         });
         return {
-            user_info, edit_form_visible, edit_form, errorStatus, alerts,
+            user_info, edit_form_visible, edit_form, emailError, alerts,
             handleCancel, handleBeforeOk, handleEditClicked
         }
     },
