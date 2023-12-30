@@ -35,8 +35,10 @@ export default {
         let selectedKeys2 = ref(['AI聊天工具']);
         let openKeys = ref(['sub1']);
         provide('selectedKeys2', selectedKeys2); // 向子组件提供状态
+        provide('openKeys', openKeys); // 向子组件提供状态
         return {
             selectedKeys2,
+            openKeys
         };
     },
 

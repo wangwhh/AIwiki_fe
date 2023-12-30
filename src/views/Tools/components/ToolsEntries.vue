@@ -1,5 +1,5 @@
 <template>
-    <div v-for="tool_set in ToolsEntries">
+    <!-- <div v-for="tool_set in ToolsEntries">
         <a-divider orientation="left" style="font-size: 20px">{{ tool_set[0].category}}</a-divider>
         <a-flex wrap="wrap" gap="large">
             <a-card v-for="kit in tool_set" hoverable class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
@@ -19,7 +19,26 @@
                 </a-flex>
             </a-card>
         </a-flex>
-    </div>
+    </div> -->
+    <!-- <a-divider orientation="left" style="font-size: 20px">{{ tool_set[0].category}}</a-divider> -->
+        <a-flex wrap="wrap" gap="large">
+            <a-card v-for="kit in tool_set" hoverable class="cardStyle" :body-style="{ padding: 0, overflow: 'initial' }">
+                <a-popover>
+                    {{ kit.description }}
+                </a-popover>
+                <a-flex justify="space-between">
+                    <img alt="avatar" :src=kit.url class="imgStyle" />
+                    <a-flex vertical align="flex-end" justify="space-between" :style="{ padding: '10px' }">
+                        <a-typography>
+                            <a-typography-title align="center" :level="4">
+                                {{ kit.title }}
+                            </a-typography-title>
+                        </a-typography>
+                        <a-button type="primary" @click="onEntryClicked(kit)" target="_blank">跳转</a-button>
+                    </a-flex>
+                </a-flex>
+            </a-card>
+        </a-flex>
 </template>
 
 <script>
@@ -79,6 +98,7 @@ export default {
 
         return {
             ToolsEntries,
+            tool_set,
             onEntryClicked
         };
     }

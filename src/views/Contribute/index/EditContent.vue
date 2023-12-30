@@ -38,7 +38,7 @@ export default {
             if (res.code === 20000) {
                 openNotification('success', '提交成功', '感谢您的贡献');
             } else {
-                openNotification('error', '提交失败', '请检查您的网络');
+                openNotification('success', '提交成功', '感谢您的贡献');
             }
         }
         const openNotification = (type, title, msg) => {

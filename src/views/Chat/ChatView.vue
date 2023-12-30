@@ -25,7 +25,12 @@
   data() {  
     return {  
       messages: [  
-        { id: 1, content: "Hello! How can I help you today?", fromAI: true }  
+        { id: 1, content: "Hello! How can I help you today?", fromAI: true },
+        { id: 2, content: "I'm an artificial intelligence robot from ZJU.", fromAI: true },
+        { id: 3, content: "You can share something interesting with me.", fromAI: true },
+        { id: 4, content: "I am glad to hear you words.", fromAI: true },  
+        { id: 5, content: "So let us start the exciting and heuristic conversation.", fromAI: true },  
+        { id: 6, content: "Do you like winter?", fromAI: true },  
       ],  
       newMessage: ""  
     };  
@@ -78,7 +83,9 @@
     height: 100vh;
 }
   .chat-wrapper {    
-    max-height: 600px;    
+    max-height: 60%;
+    height:36%;
+    width: 60%;
     overflow: hidden;    
     border: 1px solid #ccc;    
     border-radius: 10px;    
@@ -131,11 +138,13 @@
     
   .chat-input {  
     display: flex;  
+    position:relative;
     align-items: center;  
     padding: 10px;  
     border-bottom-left-radius: 10px;  
     border-bottom-right-radius: 10px;  
-    background-color: #fff;  
+    background-color: #fff;
+    bottom: 0vh;  
   }  
     
   .message-input {  

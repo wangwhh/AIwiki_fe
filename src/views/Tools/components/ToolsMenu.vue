@@ -23,7 +23,7 @@
           </span>
             </template>
             <a-menu-item key="AI聊天工具">AI聊天工具</a-menu-item>
-            <a-menu-item key="AI语言翻译">AI语言翻译</a-menu-item>
+            <a-menu-item key="AI写作工具">AI写作工具</a-menu-item>
                     </a-sub-menu>
         <a-sub-menu key="sub3">
             <template #title>
@@ -31,8 +31,7 @@
             AI学习网站
           </span>
             </template>
-            <a-menu-item key="6">AI学习网站</a-menu-item>
-            <a-menu-item key="7">AI模型框架</a-menu-item>
+            <a-menu-item key="热门工具">AI学习网站</a-menu-item>
         </a-sub-menu>
     </a-menu>
 </template>
@@ -42,10 +41,11 @@ import {inject, ref} from 'vue';
     name: 'Menu',
     setup() {
       let selectedKeys2 = inject('selectedKeys2');
+      let openKeys = inject("openKeys");
       console.log(selectedKeys2.value);
       return {
         selectedKeys2,
-        // openKeys,
+        openKeys,
       };
     },
   };

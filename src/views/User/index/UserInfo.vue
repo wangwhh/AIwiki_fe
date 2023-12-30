@@ -54,7 +54,8 @@
             <a-form-item label="职业">
                 <a-select>
                     <a-select-option value="student">学生</a-select-option>
-                    <a-select-option value="worker">打工人</a-select-option>
+                    <a-select-option value="worker">上班族</a-select-option>
+                    <a-select-option value="teacher">教师</a-select-option>
                     <a-select-option value="else">其他</a-select-option>
                 </a-select>
             </a-form-item>

@@ -39,12 +39,35 @@ export default {
             const entries = await fetchEntries();
 
             const groups = {};
+/***
+ *    <a-menu-item key="understanding">一文读懂系列</a-menu-item>
+            <a-menu-item key="news">前沿资讯</a-menu-item>
+            <a-menu-item key="knowledge_map">学习路径</a-menu-item>
+        </a-sub-menu>
+        <a-menu-item key="hot_entry">
+            热门词条
+        </a-menu-item>
+        <a-menu-item key="recent_edit">
+            最近修改
+        </a-menu-item>
+        <a-menu-item key="new_entry">
+            最新词条
+ */
+            var map = {
+                "understanding": "通俗易懂的教程",
+                "news": "前沿资讯",
+                "knowledge_map": "学习路径",
+                "hot_entry": "热门词条",
+                "recent_edit": "专业知识",
+                "new_entry": "最新知识",
+                "home": "精华文章"
+            } 
             entries.forEach(entry => {
                 let category = entry.category; // 获取首字母并转为大写
-                if (!groups[category]) {
-                    groups[category] = [];
+                if (!groups[map[category]]) {
+                    groups[map[category]] = [];
                 }
-                groups[category].push(entry);
+                groups[map[category]].push(entry);
             });
             groupedEntries.value = groups;
         });

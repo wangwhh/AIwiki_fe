@@ -55,7 +55,8 @@ export async function fetchUserInfo() {
 
 export async function modifyUserInfo(data) {
     try {
-        const res = await api.post("/user/modifyInfo", data);
+        console.log("data ", data);
+        const res = await api.get("/user/modifyInfo", data);
         return res.data;
     } catch (err) {
         console.error(err);
