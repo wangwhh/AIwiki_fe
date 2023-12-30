@@ -94,7 +94,7 @@
         <v-md-editor v-model="text" height="600px"></v-md-editor>
     </a-modal>
     <a-modal v-model:open="previewOpen" width="1000px" title="预览词条" @ok="textOpen = false" :footer="null">
-        <v-md-preview :text="previewText"  style="height:600px"></v-md-preview>
+        <v-md-preview :text="previewText"  style="height: 600px; overflow: auto"></v-md-preview>
     </a-modal>
 
 </template>
@@ -279,5 +279,8 @@ export default {
 <style scoped>
 .table {
     margin: 0 30px 0 10px
+}
+.ant-modal-body {
+    overflow: auto;
 }
 </style>
