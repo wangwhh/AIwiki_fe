@@ -147,13 +147,13 @@ export default {
             }).catch((err) => {
                 console.log(err);
                 openNotification('error','登录信息失效', '请重新登录')
-                router.push('/login');
+                // router.push('/login');
             })
         }
 
         async function passContrib(record) {
             await api.post('/reviewEntrySubmission', {
-                "ecid": record.ecid,
+                "esid": record.esid,
                 "status": "通过",
                 "comment": ""
             }).then((res) => {
@@ -171,8 +171,8 @@ export default {
         }
 
         async function rejectContrib(record) {
-            await api.post('/reviewErrorCorrection', {
-                "ecid": record.ecid,
+            await api.post('/reviewEntrySubmission', {
+                "esid": record.esid,
                 "status": "驳回",
                 "comment": "审核不通过"
             }).then((res) => {

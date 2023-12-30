@@ -6,4 +6,8 @@ const api = ref(axios.create({
     //timeout: 1000,
 }));
 
+if(sessionStorage.getItem("token")) {
+    api.value.defaults.headers.common['Authorization'] = sessionStorage.getItem("token");
+}
+
 export default api.value;
