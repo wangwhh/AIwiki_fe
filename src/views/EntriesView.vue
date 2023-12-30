@@ -37,15 +37,15 @@
     </a-table>
 
 
-    <a-modal v-model:open="edit_visible" title="修改专题信息" @ok="editOk">
+    <a-modal v-model:open="edit_visible" title="修改词条信息" @ok="editOk">
         <a-form>
-            <a-form-item label="专题名">
+            <a-form-item label="词条名">
                 <a-input v-model:value="edit_form.title" />
             </a-form-item>
-            <a-form-item label="专题简介">
+            <a-form-item label="词条简介">
                 <a-input v-model:value="edit_form.description" />
             </a-form-item>
-            <a-form-item label="专题分类">
+            <a-form-item label="词条分类">
                 <a-select v-model:value="edit_form.category" >
                     <a-select-option value="home">首页</a-select-option>
                     <a-select-option value="understanding">一文读懂系列</a-select-option>
@@ -64,16 +64,16 @@
 
     <a-modal v-model:open="insert_visible" @ok="insertOk">
         <template #title>
-            添加专题
+            添加词条
         </template>
         <a-form>
-            <a-form-item label="专题名">
+            <a-form-item label="词条名">
                 <a-input v-model:value="insert_form.title" />
             </a-form-item>
-            <a-form-item label="专题简介">
+            <a-form-item label="词条简介">
                 <a-input v-model:value="insert_form.description" />
             </a-form-item>
-            <a-form-item label="专题分类">
+            <a-form-item label="词条分类">
                 <a-select v-model:value="insert_form.category" >
                     <a-select-option value="home">首页</a-select-option>
                     <a-select-option value="understanding">一文读懂系列</a-select-option>
@@ -94,7 +94,7 @@
         <v-md-editor v-model="text" height="600px"></v-md-editor>
     </a-modal>
     <a-modal v-model:open="previewOpen" width="1000px" title="预览词条" @ok="textOpen = false" :footer="null">
-        <v-md-preview :text="previewText.slice(0, 450) + '...'"  style="height:600px"></v-md-preview>
+        <v-md-preview :text="previewText"  style="height:600px"></v-md-preview>
     </a-modal>
 
 </template>
@@ -139,10 +139,6 @@ export default {
                 title: '标题',
                 dataIndex: 'title',
                 width: 300,
-            },
-            {
-                title: '简介',
-                dataIndex: 'description',
             },
             {
                 title: '分类',
@@ -254,7 +250,7 @@ export default {
         async function fetchEntries() {
             await api.get('/entry').then((res) => {
                 if (res.data.code === 20000) {
-                    data.value = res.data.data.topics;
+                    data.value = res.data.data.entries;
                 } else {
                     openNotification('error','获取词条信息失败', '请稍后再试')
                 }

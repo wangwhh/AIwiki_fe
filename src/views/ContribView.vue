@@ -147,7 +147,7 @@ export default {
             }).catch((err) => {
                 console.log(err);
                 openNotification('error','登录信息失效', '请重新登录')
-                router.push('/login');
+                // router.push('/login');
             })
         }
 
