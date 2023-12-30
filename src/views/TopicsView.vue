@@ -57,7 +57,7 @@
                 </a-select>
             </a-form-item>
             <a-form-item>
-                <a-button type="primary" @click="onEditText">编辑内容</a-button>
+                <a-button type="primary" @click="onEditText(true)">编辑内容</a-button>
             </a-form-item>
         </a-form>
     </a-modal>
@@ -85,12 +85,12 @@
                 </a-select>
             </a-form-item>
             <a-form-item>
-                <a-button type="primary" @click="onEditText">编辑内容</a-button>
+                <a-button type="primary" @click="onEditText(false)">编辑内容</a-button>
             </a-form-item>
         </a-form>
     </a-modal>
 
-    <a-modal v-model:open="textOpen" width="1000px" title="编辑内容" @ok="textOpen = false">
+    <a-modal v-model:open="textOpen" width="1000px" title="编辑内容" @ok="textOpen = false" zIndex = "2000">
         <v-md-editor v-model="text" height="600px"></v-md-editor>
     </a-modal>
     <a-modal v-model:open="previewOpen" width="1000px" title="预览词条" @ok="textOpen = false" :footer="null">
@@ -219,8 +219,12 @@ export default {
             })
         }
 
-        async function onEditText() {
+        async function onEditText(flag) {
             textOpen.value = true;
+            if(flag == false){
+                text.value = '';
+                return;
+            }
             const res = await api.get("/entryInfo", {
                 params: {
                     id: edit_form.value.id

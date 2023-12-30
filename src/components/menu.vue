@@ -23,6 +23,11 @@
                 用户贡献审核
             </a-menu-item>
         </router-link>
+        <router-link to="/error">
+            <a-menu-item key="4">
+                用户纠错审核
+            </a-menu-item>
+        </router-link>
     </a-menu>
 </template>
 <script>

@@ -4,6 +4,7 @@ import LoginView from "@/views/LoginView.vue";
 import ContribView from "@/views/ContribView.vue";
 import TopicsView from "@/views/TopicsView.vue";
 import ToolsView from "@/views/ToolsView.vue";
+import ErrorView from "@/views/ErrorView.vue";
 
 
 const routes = [
@@ -38,8 +39,12 @@ const routes = [
         path: '/contrib',
         name: 'contrib',
         component: ContribView,
-    }
-
+    },
+    {
+        path: '/error',
+        name: 'error',
+        component: ErrorView,
+    },
 ]
 
 const router = new createRouter({
