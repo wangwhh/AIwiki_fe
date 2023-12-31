@@ -75,5 +75,6 @@ export default {
 .imgStyle {
     display: block;
     height: 250px;
+    width: 440px;
 }
 </style>
