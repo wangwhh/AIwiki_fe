@@ -74,7 +74,7 @@
                 <a-input v-model:value="insert_form.description" />
             </a-form-item>
             <a-form-item label="词条分类">
-                <a-select v-model:value="insert_form.category" >
+                <a-select v-model:value="insert_form.category">
                     <a-select-option value="home">首页</a-select-option>
                     <a-select-option value="understanding">一文读懂系列</a-select-option>
                     <a-select-option value="news">前沿资讯</a-select-option>
@@ -134,6 +134,7 @@ export default {
                 title: '编号',
                 dataIndex: 'id',
                 width: 150,
+                sorter: (a, b) => a.id - b.id,
             },
             {
                 title: '标题',

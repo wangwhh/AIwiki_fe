@@ -131,6 +131,7 @@ export default {
                 title: '编号',
                 dataIndex: 'id',
                 width: 150,
+                sorter: (a, b) => a.id - b.id,
             },
             {
                 title: '标题',

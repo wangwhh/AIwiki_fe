@@ -33,7 +33,7 @@ export default {
         function handleLogin() {
             api.post('/adminLogin', {
                 username: loginForm.value.name,
-                password: loginForm.value.pwd,
+                password: md5(loginForm.value.pwd),
             }).then(res => {
                 // console.log(res);
                 if (res.data.code === 20000) {

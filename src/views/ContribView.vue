@@ -42,7 +42,7 @@
     </a-table>
 
     <a-modal v-model:open="previewOpen" width="1000px" title="预览词条" @ok="textOpen = false" :footer="null">
-        <v-md-preview :text="previewText.slice(0, 450) + '...'"  style="height:600px"></v-md-preview>
+        <v-md-preview :text="previewText"  style="height:600px; overflow: auto"></v-md-preview>
     </a-modal>
 </template>
 
