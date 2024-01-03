@@ -39,9 +39,9 @@ export default {
                 title: title.value,
                 text: text.value,
             }
-            const res = addEntry(entry);
+            const res = await addEntry(entry);
             if (res.code === 20000) {
-                openNotification('success', '提交成功', '感谢您的贡献');
+                openNotification('success', '提交成功', res.msg);
             } else {
                 openNotification('success', '提交成功', '感谢您的贡献');
             }

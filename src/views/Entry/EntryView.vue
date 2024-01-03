@@ -13,7 +13,19 @@
             </a-layout-sider>
         </a-layout>
     </a-layout>
+    <a-float-button-group shape="square" :style="{ left: '24px' }">
+        <a-float-button @click="switchLikeStatus" :type="likeStatus">
+            <template #icon>
+                <LikeOutlined />
+            </template>
+        </a-float-button>
 
+        <a-float-button @click="switchStarStatus" :type="starStatus">
+            <template #icon>
+                <StarOutlined />
+            </template>
+        </a-float-button>
+    </a-float-button-group>
 
 </template>
 
@@ -24,13 +36,28 @@ import EntryContent from "@/views/Entry/components/EntryContent.vue";
 import Anchor from "@/views/Entry/components/Anchor.vue";
 import Relations from "@/views/Entry/components/Relations.vue";
 import Buttons from "@/views/Entry/components/Buttons.vue";
-import {CheckCircleOutlined} from "@ant-design/icons-vue";
+import {CheckCircleOutlined, LikeOutlined, StarOutlined} from "@ant-design/icons-vue";
 
 export default {
     name: "EntryView",
-    components: {Buttons, Relations, EntryContent, Anchor, CheckCircleOutlined},
+    components: {Buttons, Relations, EntryContent, Anchor, CheckCircleOutlined, LikeOutlined, StarOutlined},
     setup() {
-
+        const starStatus = ref("");
+        const likeStatus = ref("");
+        function switchStarStatus() {
+            if (starStatus.value === "primary") {
+                starStatus.value = "";
+            } else {
+                starStatus.value = "primary";
+            }
+        }
+        function switchLikeStatus() {
+            if (likeStatus.value === "primary") {
+                likeStatus.value = "";
+            } else {
+                likeStatus.value = "primary";
+            }
+        }
         const contentLoaded = ref(false); // 新增状态
         const setContentLoaded = () => {
             contentLoaded.value = true;
@@ -39,7 +66,10 @@ export default {
         return {
             contentLoaded,
             setContentLoaded,
-            //entry_id
+            switchStarStatus,
+            switchLikeStatus,
+            starStatus,
+            likeStatus
         }
     },
 }

@@ -2,14 +2,13 @@ import api from "@/api/api";
 
 export async function postEdit(entry) {
     try {
-        let param ={
-            id: entry.value.id,
-            text: entry.value.text
+        let param = {
+            eid: entry.value.id,
+            content: entry.value.text
         }
         console.log("param ", param)
-        const res = await api.post("/modifyEntry", entry);
-        console.log(res.data.data)
-        return res.data.data;
+        const res = await api.post("/modifyEntry", param);
+        return res.data;
 
     } catch (err) {
         console.error(err);
@@ -19,15 +18,13 @@ export async function postEdit(entry) {
 
 export async function addEntry(entry) {
     try {
-        console.log("entry ", entry)
         let param ={
             id: entry.value.id,
             text: entry.value.text
         }
         console.log("param ", param)
         const res = await api.post("/addEntry", param);
-        console.log(res.data.data)
-        return res.data.data;
+        return res.data;
     } catch (err) {
         console.error(err);
         console.log("error")

@@ -79,6 +79,7 @@ import { notification } from 'ant-design-vue';
 import api from "@/api/api";
 import loginModalOpen from "@/store/loginModalOpen";
 import router from "@/router";
+import md5 from 'js-md5';
 
 export default {
     name: "TopAvatar",
@@ -130,7 +131,11 @@ export default {
 
         async function handleLogin() {
             console.log(loginForm.value)
-            const res = await login(loginForm.value);
+            let loginFormCopy = {
+                ...loginForm.value
+            };
+            loginFormCopy.password = md5(loginForm.value.password);
+            const res = await login(loginFormCopy);
             if (res.code !== 20000) {
                 openNotification('error', '登录失败', res.msg)
             } else {
@@ -185,9 +190,11 @@ export default {
                 errorStatus.value.pwd2 = '';
                 alerts.value.flag = false;
             }
-            console.log("registerForm.value ", registerForm.value);
-            const res = await register(registerForm.value);
-            console.log('res ', res);
+            let copy = {
+                ...registerForm.value
+            };
+            copy.password = md5(registerForm.value.password);
+            const res = await register(copy);
             if (res.code !== 20000) {
                 openNotification('error', '注册失败', res.msg);
             } else {
@@ -197,11 +204,9 @@ export default {
             
         }
         function userSpace() {
-            console.log("userSpace")
             router.push('/user/info')
         }
         async function handleLogout() {
-            console.log("logout");
             isLogin.value = false;
             const res = await logout();
             if(res.code === 20000) {

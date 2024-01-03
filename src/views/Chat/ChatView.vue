@@ -96,9 +96,8 @@
     align-items: center;
     height: 100vh;
 }
-  .chat-wrapper {    
-    max-height: 60%;
-    height:36%;
+  .chat-wrapper {
+    height: 80%;
     width: 60%;
     overflow: hidden;    
     border: 1px solid #ccc;    
@@ -152,14 +151,14 @@
     
   .chat-input {  
     display: flex;  
-    position: absolute;
+    position: fixed;
     width: 60%;
     align-items: center;  
     padding: 10px;  
     border-bottom-left-radius: 10px;  
     border-bottom-right-radius: 10px;  
     background-color: #fff;
-    bottom: 32%; 
+    top: 90%;
   }  
     
   .message-input {  

@@ -31,14 +31,12 @@ export default {
         })
 
         async function submit() {
-            console.log("submit");
             entry.value.text = text.value;
-            console.log(entry.value);
-            const res = postEdit(entry);
+            const res = await postEdit(entry);
             if (res.code === 20000) {
-                openNotification('success', '提交成功', '感谢您的贡献');
+                openNotification('success', '提交成功', res.msg);
             } else {
-                openNotification('success', '提交成功', '感谢您的贡献');
+                openNotification('success', '提交成功', res.msg);
             }
         }
         const openNotification = (type, title, msg) => {

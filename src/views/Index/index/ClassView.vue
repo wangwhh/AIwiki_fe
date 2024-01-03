@@ -63,11 +63,18 @@ export default {
                 "home": "精华文章"
             } 
             entries.forEach(entry => {
-                let category = entry.category; // 获取首字母并转为大写
-                if (!groups[map[category]]) {
-                    groups[map[category]] = [];
+                let category = entry.category;
+                if(map[category]) {
+                    if (!groups[map[category]]) {
+                        groups[map[category]] = [];
+                    }
+                    groups[map[category]].push(entry);
+                } else {
+                    if (!groups[category]) {
+                        groups[category] = [];
+                    }
+                    groups[category].push(entry);
                 }
-                groups[map[category]].push(entry);
             });
             groupedEntries.value = groups;
         });

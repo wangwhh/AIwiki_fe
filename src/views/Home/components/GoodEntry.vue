@@ -4,7 +4,7 @@
         <a-button v-for="entry in good_entries"
                   type="link" style="width: 100%; text-align: initial"
                   @click="onEntryClicked(entry)">
-            {{entry.title}}
+            {{entry.title.slice(0, 20)}}
         </a-button>
     </a-card>
 </template>

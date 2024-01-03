@@ -40,8 +40,8 @@ export default {
 
             const groups = {};
             entries.forEach(entry => {
-                let letter = entry.title.substring(0,4); // 获取首字母并转为大写
-                // if(letter >= 'a' && letter <= 'z') letter = letter.toUpperCase();
+                let letter = entry.title.substring(0,1); // 获取首字母并转为大写
+                if(letter >= 'a' && letter <= 'z') letter = letter.toUpperCase();
                 if (!groups[letter]) {
                     groups[letter] = [];
                 }
